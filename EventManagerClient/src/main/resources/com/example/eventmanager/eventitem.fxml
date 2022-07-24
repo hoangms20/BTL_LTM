@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="parentVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="32.0" prefWidth="50.0" text="ID:" textAlignment="CENTER">
+               <font>
+                  <Font name="Calibri Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="eventId" alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="100.0" text="12345" textAlignment="LEFT" textFill="#ff3300">
+               <font>
+                  <Font name="Calibri Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="eventName" alignment="CENTER" prefHeight="32.0" prefWidth="650.0" text="Event 1" textAlignment="CENTER" textFill="#14ab06">
+               <font>
+                  <Font name="Calibri Bold" size="28.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="650.0">
+               <children>
+                  <HBox prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="97.0" text="Created by:">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="createdBy" prefHeight="22.0" prefWidth="550.0" text="Event 1">
+                           <font>
+                              <Font name="Calibri Light" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="48.0" text="Time:">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="time" prefHeight="22.0" prefWidth="550.0" text="Event 1">
+                           <font>
+                              <Font name="Calibri Light" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="58.0" text="Place:">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="place" prefHeight="20.0" prefWidth="586.0" text="Event 1">
+                           <font>
+                              <Font name="Calibri Light" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0"/>
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button fx:id="detailButton" mnemonicParsing="false" onAction="#watchDetail" style="-fx-background-color: #ffc900;" text="Detail" textFill="#807d6e">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" />
+   </padding>
+   <VBox.margin>
+      <Insets bottom="5.0" />
+   </VBox.margin>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</VBox>
