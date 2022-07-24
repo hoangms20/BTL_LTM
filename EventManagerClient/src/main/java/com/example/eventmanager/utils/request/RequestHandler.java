@@ -58,12 +58,11 @@ public class RequestHandler implements IRequestHandler {
     }
 
     @Override
-    public int sendSignUpRequest(String username, String password, String phone) {
+    public int sendSignUpRequest(String username, String password) {
         //add every message info to a list
         List<String> messList = new ArrayList<>();
         messList.add(username);
         messList.add(password);
-        messList.add(phone);
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.CREATE_NEW_USER, messList);

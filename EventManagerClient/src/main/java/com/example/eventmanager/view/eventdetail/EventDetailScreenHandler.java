@@ -2,9 +2,11 @@ package com.example.eventmanager.view.eventdetail;
 
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.EventDetailController;
+import com.example.eventmanager.controller.InvitationController;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
+import com.example.eventmanager.view.invitation.InvitationScreenHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -81,7 +83,13 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     private List<UserDTO> userDTOList;
 
     @FXML
-    void invite(ActionEvent event) {
+    void invite(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        InvitationController controller = new InvitationController();
+        InvitationScreenHandler invitationScreenHandler = new InvitationScreenHandler(stage, ScreenPathConstain.INVITATION_SCREEN_PATH, this.eventDTO);
+        invitationScreenHandler.setScreenTitle("Invitation screen");
+        invitationScreenHandler.setBController(controller);
+        invitationScreenHandler.show();
 
     }
 

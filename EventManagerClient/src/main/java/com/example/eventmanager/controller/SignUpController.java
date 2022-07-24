@@ -16,7 +16,7 @@ public class SignUpController extends BaseController{
         int ret;
 
         //send login message
-        ret = requestHandler.sendSignUpRequest(user.getUsername(), user.getPassword(), user.getPhone());
+        ret = requestHandler.sendSignUpRequest(user.getUsername(), user.getPassword());
         //check send successfully?
         if (ret != 0) {
             responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);

@@ -6,7 +6,7 @@ import com.example.eventmanager.model.UserDTO;
 public interface IRequestHandler {
     int sendLoginRequest(String username, String password);
 
-    int sendSignUpRequest(String username, String password, String phone);
+    int sendSignUpRequest(String username, String password);
 
     int sendLogOutRequest();
 

@@ -1,5 +1,8 @@
 package com.example.eventmanager.view.invitation;
 
+import com.example.eventmanager.controller.BaseController;
+import com.example.eventmanager.controller.InvitationController;
+import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.FXMLScreenHandler;
 import javafx.event.ActionEvent;
@@ -17,8 +20,17 @@ public class InvitationItem extends FXMLScreenHandler {
     @FXML // fx:id="inviteButton"
     private Button inviteButton; // Value injected by FXMLLoader
 
+    private BaseController controller;
+
+    private UserDTO userDTO;
+
+    private EventDTO eventDTO;
+
     @FXML
     void invite(ActionEvent event) {
+        InvitationController invitationController = (InvitationController) this.controller;
+        StringBuilder responseMess = new StringBuilder("");
+        invitationController.invite(userDTO, eventDTO, responseMess);
 
     }
 
@@ -26,8 +38,11 @@ public class InvitationItem extends FXMLScreenHandler {
         super(screenPath);
     }
 
-    public InvitationItem(String screenPath, UserDTO userDTO) throws IOException {
+    public InvitationItem(String screenPath, UserDTO userDTO, EventDTO eventDTO, BaseController controller) throws IOException {
         super(screenPath);
         username.setText(userDTO.getUsername());
+        this.controller = controller;
+        this.userDTO = userDTO;
+        this.eventDTO = eventDTO;
     }
 }

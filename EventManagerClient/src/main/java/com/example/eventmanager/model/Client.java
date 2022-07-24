@@ -105,12 +105,14 @@ public class Client {
                 String s = mess.substring(start, start + BUFF_SIZE);
                 left = left - BUFF_SIZE;
                 start = start + BUFF_SIZE;
-                this.out.writeUTF(s);
+                this.out.writeBytes(s);
+                System.out.println("11s=" + s);
             }
 
             if (left > 0) {
                 String s = mess.substring(start, start + left);
-                this.out.writeUTF(s);
+                System.out.println("s=" + s);
+                this.out.writeBytes(s);
             }
             System.out.println("buffSend=" + buffSend);
 
@@ -127,7 +129,13 @@ public class Client {
 
         try {
             while (true) {
-                line = this.in.readUTF();
+                int length = in.readInt();
+                byte[] array = new byte[length];
+                in.read(array);
+                System.out.println(array);
+
+                line = String.valueOf(this.in.readAllBytes());
+                System.out.println("line="+line);
                 this.cache.append(line);
                 if (checkDelimiter(this.cache.toString()))
                     break;

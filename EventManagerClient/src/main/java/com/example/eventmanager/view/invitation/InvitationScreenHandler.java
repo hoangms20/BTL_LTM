@@ -3,6 +3,7 @@ package com.example.eventmanager.view.invitation;
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.EventDetailController;
 import com.example.eventmanager.controller.InvitationController;
+import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.eventdetail.UserItem;
@@ -21,14 +22,17 @@ public class InvitationScreenHandler extends BaseScreenHandler {
 
     private List<UserDTO> userDTOList;
 
+    private EventDTO eventDTO;
+
     @FXML
     void reloadUserList(MouseEvent event) {
         reloadUserList();
         displayUserList(getUserDTOList());
     }
 
-    public InvitationScreenHandler(Stage stage, String screenPath) throws IOException {
+    public InvitationScreenHandler(Stage stage, String screenPath, EventDTO eventDTO) throws IOException {
         super(stage, screenPath);
+        this.eventDTO = eventDTO;
     }
 
     @Override
@@ -59,8 +63,8 @@ public class InvitationScreenHandler extends BaseScreenHandler {
             for (UserDTO userDTO :
                     list) {
                 try {
-                    UserItem userItem = new UserItem(ScreenPathConstain.INVITATION_ITEM_SCREEN_PATH, userDTO);
-                    this.containerUser.getChildren().add(userItem.getContent());
+                    InvitationItem item = new InvitationItem(ScreenPathConstain.INVITATION_ITEM_SCREEN_PATH, userDTO, this.eventDTO, getBController());
+                    this.containerUser.getChildren().add(item.getContent());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

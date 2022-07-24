@@ -7,6 +7,7 @@ import com.example.eventmanager.utils.response.ResponseHandler;
 
 import java.net.*;
 import java.io.*;
+import java.util.Arrays;
 
 import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
 
@@ -44,9 +45,17 @@ public class Server {
                     try {
                         cache = new StringBuilder("");
                         do {
-                            line = input.readUTF();
-                            System.out.println("line=" + line);
+                            int length = input.readShort();
+                            System.out.println("length="+length);
+                            byte[] array = new byte[length];
+                            input.readFully(array);
+                            System.out.println(new String(array, "UTF-8"));
+
+                            System.out.println("*********");
+                            line = String.valueOf(input.readLine());
+                            System.out.println("line=" + line+"***");
                             cache.append(line);
+                            System.out.println("cache="+cache.toString()+"***");
                         }while (!cache.substring(cache.length() - 2, cache.length()).equals(DELIMITER));
                         System.out.println("cache="+cache.toString());
 
@@ -59,51 +68,52 @@ public class Server {
                         System.out.println("code=" + response.getCode());
 
                         if (response.getCode().equals(RequestPrefix.CREATE_NEW_USER)) {
-                            out.writeUTF("10\r\n");
+                            out.writeBytes("10\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.LOG_IN)) {
-                            out.writeUTF("20\r\n");
+                            System.out.println("20\r\n");
+                            out.writeBytes("20\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.CREATE_EVENT)) {
-                            out.writeUTF("30 1|user1|event1|1/1/2023|HUST|abc|\r\n");
+                            out.writeBytes("30 1|user1|event1|1/1/2023|HUST|abc|\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.JOIN_EVENT)) {
-                            out.writeUTF("60\r\n");
+                            out.writeBytes("60\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.GET_INVITATION_LIST)) {
-                            out.writeUTF("80 1|user1|event1|1/1/2023|HUST|ds1|#2|user1|event2|1/1/2023|HUST|ds2|#3|user3|event3|1/1/2023|HUST|ds3|#\r\n");
+                            out.writeBytes("80 1|user1|event1|1/1/2023|HUST|ds1|#2|user1|event2|1/1/2023|HUST|ds2|#3|user3|event3|1/1/2023|HUST|ds3|#\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.GET_REQUEST_LIST)) {
-                            out.writeUTF("90 user3|1|user1|event1|1/1/2023|HUST|ds1|#user2|2|user1|event22222222222222222222222222222222222222|1/1/2023|HUST|ds2|#\r\n");
+                            out.writeBytes("90 user3|1|user1|event1|1/1/2023|HUST|ds1|#user2|2|user1|event22222222222222222222222222222222222222|1/1/2023|HUST|ds2|#\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.GET_USER_LIST)) {
-                            out.writeUTF("100 user1|user2|user3|\r\n");
+                            out.writeBytes("100 user1|user2|user3|\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.GET_EVENT_LIST)) {
-                            out.writeUTF("110 1|user1|event1|1/1/2023|HUST|ds1|#2|user1|event2|1/1/2023|HUST|ds2|#3|user3|event3|1/1/2023|HUST|ds3|#\r\n");
+                            out.writeBytes("110 1|user1|event1|1/1/2023|HUST|ds1|#2|user1|event2|1/1/2023|HUST|ds2|#3|user3|event3|1/1/2023|HUST|ds3|#\r\n");
                             continue;
                         }
 
                         if (response.getCode().equals(RequestPrefix.LOG_OUT)) {
-                            out.writeUTF("120\r\n");
+                            out.writeBytes("120\r\n");
                             continue;
                         }
 
-                        out.writeUTF("99\r\n");
+                        out.writeBytes("99\r\n");
 
                     } catch (IOException e) {
                         e.printStackTrace();

@@ -32,9 +32,6 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
     @FXML // fx:id="repassword"
     private PasswordField repassword; // Value injected by FXMLLoader
 
-    @FXML // fx:id="phone"
-    private TextField phone; // Value injected by FXMLLoader
-
     @FXML // fx:id="submitButton"
     private Button submitButton; // Value injected by FXMLLoader
 
@@ -61,7 +58,7 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
 
         SignUpController controller = (SignUpController) getBController();
         StringBuilder responseMess = new StringBuilder("");
-        UserDTO user = new UserDTO(username.getText(), password.getText(), phone.getText());
+        UserDTO user = new UserDTO(username.getText(), password.getText());
 
         int ret = controller.signUp(user, responseMess);
 
@@ -96,10 +93,6 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
             return false;
         }
 
-        if (phone.getText() == null || phone.getText().equals("")) {
-            announceWarning("Please Enter Your Phone!", "Warning");
-            return false;
-        }
 
         if (!password.getText().equals(repassword.getText())) {
             announceWarning("Password and Repassword do not match!", "Warning");
@@ -114,11 +107,6 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
         }
 
         if (!controller.checkNotAllowedCharacter(password.getText())){
-            announceWarning("Fields can not include Forbidden Character!", "Warning");
-            return false;
-        }
-
-        if (!controller.checkNotAllowedCharacter(phone.getText())){
             announceWarning("Fields can not include Forbidden Character!", "Warning");
             return false;
         }
