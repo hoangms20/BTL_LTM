@@ -105,12 +105,10 @@ public class Client {
                 left = left - BUFF_SIZE;
                 start = start + BUFF_SIZE;
                 this.out.writeBytes(s);
-                System.out.println("11s=" + s);
             }
 
             if (left > 0) {
                 String s = mess.substring(start, start + left);
-                System.out.println("s=" + s);
                 this.out.writeBytes(s);
             }
             System.out.println("buffSend=" + buffSend);
@@ -136,26 +134,6 @@ public class Client {
         }
 
         return this.cache.length();
-    }
-
-    private boolean checkDelimiter(String s) {
-        int n = s.length();
-        int m = DELIMITER.length();
-
-        if (s.charAt(n - m) == DELIMITER.charAt(0)) {
-            int d = 0;
-            for (int j = 1; j < m; j++) {
-                if (s.charAt(n - m + j) == DELIMITER.charAt(j)) {
-                    d++;
-                }
-            }
-
-            if (d == m - 1) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public void close() {

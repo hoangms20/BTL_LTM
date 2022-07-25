@@ -9,7 +9,6 @@ public class ResponseMessage {
     public static final String EXITED_USER_MESS = "This username is existed!";
 
     //login
-    public static final String NO_USER_OR_PASSWORD_MESS = "You do not enter user or password!";
     public static final String WRONG_USER_OR_PASSWORD_MESS = "Wrong user or password!";
 
     //create new event

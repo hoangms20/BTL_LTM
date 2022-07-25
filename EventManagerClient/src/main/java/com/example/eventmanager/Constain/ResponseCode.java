@@ -9,8 +9,7 @@ public class ResponseCode {
 
     //login
     public static final String OK_LOGIN_CODE = "20";
-    public static final String NO_USER_OR_PASSWORD_LOGIN_CODE = "21";
-    public static final String WRONG_USER_OR_PASSWORD_LOGIN_CODE = "22";
+    public static final String WRONG_USER_OR_PASSWORD_LOGIN_CODE = "21";
 
     //create new event
     public static final String OK_CREATE_EVENT_CODE = "30";

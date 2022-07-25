@@ -78,7 +78,7 @@ public class LoginScreenHandler extends BaseScreenHandler implements Initializab
                 e.printStackTrace();
             }
         }else {
-            announceWarning(responseMess.toString(),"Log in");
+            announceError(responseMess.toString(),"Error");
         }
     }
 

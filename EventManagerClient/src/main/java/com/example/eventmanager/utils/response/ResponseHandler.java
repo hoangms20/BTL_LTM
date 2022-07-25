@@ -14,32 +14,6 @@ import static com.example.eventmanager.Constain.SocketConfig.*;
 public class ResponseHandler implements IResponseHandler {
     private Client client = Client.getClient();
 
-//    private int lookUpDelimiter() {
-//        StringBuilder cache = client.getCache();
-//        int n = cache.length();
-//        int m = DELIMITER.length();
-//
-//        int index = -1;
-//
-//        for (int i = 0; i < n - m + 1; i++) {
-//            if (cache.charAt(i) == DELIMITER.charAt(0)) {
-//                int d = 0;
-//                for (int j = 1; j < m; j++) {
-//                    if (cache.charAt(i + j) == DELIMITER.charAt(j)) {
-//                        d++;
-//                    }
-//                }
-//
-//                if (d == m - 1) {
-//                    index = i + m;
-//                    break;
-//                }
-//            }
-//        }
-//
-//        return index;
-//    }
-
     private String getAMessage() {
         StringBuilder cache = client.getCache();
         String mess = cache.toString();
@@ -217,11 +191,6 @@ public class ResponseHandler implements IResponseHandler {
             return;
         }
 
-        if (response.getCode().equals(ResponseCode.NO_USER_OR_PASSWORD_LOGIN_CODE)){
-            responseMess.append(ResponseMessage.NO_USER_OR_PASSWORD_MESS);
-            return;
-        }
-
         if (response.getCode().equals(ResponseCode.WRONG_USER_OR_PASSWORD_LOGIN_CODE)){
             responseMess.append(ResponseMessage.WRONG_USER_OR_PASSWORD_MESS);
             return;
@@ -252,10 +221,6 @@ public class ResponseHandler implements IResponseHandler {
             return;
         }
 
-        if (response.getCode().equals(ResponseCode.NO_USER_OR_PASSWORD_SIGN_UP_CODE)){
-            responseMess.append(ResponseMessage.NO_USER_OR_PASSWORD_MESS);
-            return;
-        }
 
         if (response.getCode().equals(ResponseCode.EXITED_USER_SIGN_UP_CODE)){
             responseMess.append(ResponseMessage.EXITED_USER_MESS);
