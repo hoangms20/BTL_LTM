@@ -131,13 +131,13 @@ public class RequestHandler implements IRequestHandler {
     public int sendReplyJoinEventRequest(EventDTO event, UserDTO userDTO, String reply) {
         //add every message info to a list
         List<String> messList = new ArrayList<>();
-        messList.add(userDTO.getUsername());
         messList.add(event.getCreatedBy());
+        messList.add(userDTO.getUsername());
         messList.add(event.getId());
         messList.add(reply);
 
         //set request message
-        String rq = setRequestMessage(RequestPrefix.JOIN_EVENT, messList);
+        String rq = setRequestMessage(RequestPrefix.REPLY_JOIN_EVENT, messList);
 
         if (sendRequest(rq) == -1) {
             return -1;
@@ -170,8 +170,10 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.GET_REQUEST_LIST, messList);
+        StringBuilder s =  new StringBuilder(rq.substring(0,rq.length()-3));
+        s.append(DELIMITER);
 
-        if (sendRequest(rq) == -1) {
+        if (sendRequest(s.toString()) == -1) {
             return -1;
         }
 

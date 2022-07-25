@@ -11,8 +11,7 @@ public class RequestPrefix {
     public static final String REPLY_JOIN_EVENT = "REQUESTREPLY ";
     public static final String INVITATION = "INVITE ";
     public static final String INVITATION_REPLY = "INVITE_REPLY ";
-    public static final String GET_INVITATION_LIST = "GETINVITATION ";
-    public static final String GET_REQUEST_LIST = "GETREQUEST ";
-
+    public static final String GET_INVITATION_LIST = "REFRESHINVITE ";
+    public static final String GET_REQUEST_LIST = "REFRESHREQUEST ";
 
 }

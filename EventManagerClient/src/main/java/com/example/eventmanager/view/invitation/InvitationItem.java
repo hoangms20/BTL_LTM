@@ -33,7 +33,6 @@ public class InvitationItem extends FXMLScreenHandler {
     void invite(ActionEvent event) {
         InvitationController invitationController = (InvitationController) this.controller;
         StringBuilder responseMess = new StringBuilder("");
-        invitationController.invite(userDTO, eventDTO, responseMess);
 
         if (invitationController.invite(userDTO, eventDTO, responseMess) != 0) {
             getPrevScreen().announceError(responseMess.toString(), "Error");

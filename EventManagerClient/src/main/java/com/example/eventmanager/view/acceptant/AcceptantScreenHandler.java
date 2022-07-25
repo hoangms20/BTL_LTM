@@ -2,11 +2,10 @@ package com.example.eventmanager.view.acceptant;
 
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.AcceptantController;
-import com.example.eventmanager.controller.InvitationController;
 import com.example.eventmanager.model.EventDTO;
+import com.example.eventmanager.model.RequestedEventDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
-import com.example.eventmanager.view.invitation.InvitationItem;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -21,7 +20,7 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
 
     private EventDTO eventDTO;
 
-    private List<UserDTO> userDTOList;
+    private List<RequestedEventDTO> requestedEventDTOList;
 
     public AcceptantScreenHandler(Stage stage, String screenPath, EventDTO eventDTO) throws IOException {
         super(stage, screenPath);
@@ -31,7 +30,7 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
     @Override
     public void show() {
         reloadUserList();
-        displayUserList(getUserDTOList());
+        displayUserList(getRequestedEventDTOList());
         super.show();
     }
 
@@ -42,32 +41,34 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
 
     public void updateUserList() {
         reloadUserList();
-        displayUserList(getUserDTOList());
+        displayUserList(getRequestedEventDTOList());
     }
 
-    public List<UserDTO> getUserDTOList() {
-        return userDTOList;
+    public List<RequestedEventDTO> getRequestedEventDTOList() {
+        return requestedEventDTOList;
     }
 
-    public void setUserDTOList(List<UserDTO> userDTOList) {
-        this.userDTOList = userDTOList;
+    public void setRequestedEventDTOList(List<RequestedEventDTO> requestedEventDTOList) {
+        this.requestedEventDTOList = requestedEventDTOList;
     }
 
     public void reloadUserList() {
         AcceptantController controller = (AcceptantController) getBController();
         StringBuilder responseMess = new StringBuilder("");
-        setUserDTOList(controller.getListUser(responseMess));
+        List<RequestedEventDTO> requestedEventDTOList = controller.getListRequestedEvent(responseMess, eventDTO.getId());
+
+        setRequestedEventDTOList(requestedEventDTOList);
     }
 
-    private void displayUserList(List<UserDTO> list) {
+    private void displayUserList(List<RequestedEventDTO> list) {
         this.containerUser.getChildren().clear();
 
         if (list != null) {
             int i = 0;
-            for (UserDTO userDTO :
+            for (RequestedEventDTO event :
                     list) {
                 try {
-                    AcceptantItem item = new AcceptantItem(ScreenPathConstain.ACCEPTANT_ITEM_SCREEN_PATH, userDTO, this.eventDTO, getBController());
+                    AcceptantItem item = new AcceptantItem(ScreenPathConstain.ACCEPTANT_ITEM_SCREEN_PATH, new UserDTO(event.getSender()), this.eventDTO, getBController());
                     item.setPrevScreen(this);
                     if (i % 2 == 0){
                         item.getFrame().setStyle("-fx-background-color: #FEFBE7");

@@ -2,6 +2,7 @@ package com.example.eventmanager.controller;
 
 import com.example.eventmanager.Constain.ResponseMessage;
 import com.example.eventmanager.model.EventDTO;
+import com.example.eventmanager.model.RequestedEventDTO;
 import com.example.eventmanager.model.Response;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.utils.IRequestHandler;
@@ -9,17 +10,33 @@ import com.example.eventmanager.utils.IResponseHandler;
 import com.example.eventmanager.utils.request.RequestHandler;
 import com.example.eventmanager.utils.response.ResponseHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AcceptantController extends BaseController{
-    public List<UserDTO> getListUser(StringBuilder responseMess){
+public class AcceptantController extends BaseController {
+
+    private void filterEventById(List<RequestedEventDTO> requestedEventDTOS, String eventId) {
+        List<RequestedEventDTO> requestedEventDTOList = new ArrayList<>();
+
+        for (RequestedEventDTO u :
+                requestedEventDTOS) {
+            if (u.getId().equals(eventId)) {
+                requestedEventDTOList.add(u);
+            }
+        }
+
+        requestedEventDTOS = requestedEventDTOList;
+
+    }
+
+    public List<RequestedEventDTO> getListRequestedEvent(StringBuilder responseMess, String eventId) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
-        List<UserDTO> userDTOList;
+        List<RequestedEventDTO> requestedEventDTOList;
 
         //send login message
-        ret = requestHandler.sendGetUserListRequest();
+        ret = requestHandler.sendGetRequestListRequest(new UserDTO(getUserName()));
         //check send successfully?
         if (ret != 0) {
             responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
@@ -37,18 +54,14 @@ public class AcceptantController extends BaseController{
         Response response = responseHandler.getResponses();
 
         //handle login response
-        userDTOList = responseHandler.handlerGetUserListResponse(response, responseMess);
+        requestedEventDTOList = responseHandler.handlerGetRequestListResponse(response, responseMess);
 
-        //remove user logged in from list
-        for (UserDTO u:
-                userDTOList) {
-            System.out.println(u.getUsername());
-        }
+        filterEventById(requestedEventDTOList, eventId);
 
-        return userDTOList;
+        return requestedEventDTOList;
     }
 
-    public int replyJoinRequest(UserDTO user, EventDTO eventDTO, String reply, StringBuilder responseMess){
+    public int replyJoinRequest(UserDTO user, EventDTO eventDTO, String reply, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

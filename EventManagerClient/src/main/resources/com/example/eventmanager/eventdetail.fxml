@@ -63,7 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="announcementLabel" layoutX="779.0" layoutY="105.0" text="This is your event!" textFill="RED" visible="false">
+            <Label fx:id="announcementLabel" layoutX="880.0" layoutY="105.0" text="This is your event!" textFill="RED" visible="false">
                <font>
                   <Font name="Calibri Bold Italic" size="18.0" />
                </font>

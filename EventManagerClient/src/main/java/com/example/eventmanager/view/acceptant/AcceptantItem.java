@@ -43,7 +43,6 @@ public class AcceptantItem extends FXMLScreenHandler {
     void accept(ActionEvent event) {
         AcceptantController acceptantController = (AcceptantController) this.controller;
         StringBuilder responseMess = new StringBuilder("");
-        acceptantController.replyJoinRequest(userDTO, eventDTO, OK_RELPY, responseMess);
 
         if (acceptantController.replyJoinRequest(userDTO, eventDTO, OK_RELPY, responseMess) != 0) {
             getPrevScreen().announceError(responseMess.toString(), "Error");
@@ -60,7 +59,6 @@ public class AcceptantItem extends FXMLScreenHandler {
     void reject(ActionEvent event) {
         AcceptantController acceptantController = (AcceptantController) this.controller;
         StringBuilder responseMess = new StringBuilder("");
-        acceptantController.replyJoinRequest(userDTO, eventDTO, OK_RELPY, responseMess);
 
         if (acceptantController.replyJoinRequest(userDTO, eventDTO, DENY_RELPY, responseMess) != 0) {
             getPrevScreen().announceError(responseMess.toString(), "Error");
