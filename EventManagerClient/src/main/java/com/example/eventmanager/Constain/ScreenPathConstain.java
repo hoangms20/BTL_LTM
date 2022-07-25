@@ -15,4 +15,6 @@ public class ScreenPathConstain {
     public static final String ANNOUNCEMENT_ITEM_SCREEN_PATH = "announcementitem.fxml";
     public static final String INVITATION_SCREEN_PATH = "invitation.fxml";
     public static final String INVITATION_ITEM_SCREEN_PATH = "invitationitem.fxml";
+    public static final String ACCEPTANT_SCREEN_PATH = "invitation.fxml";
+    public static final String ACCEPTANT_ITEM_SCREEN_PATH = "invitationitem.fxml";
 }

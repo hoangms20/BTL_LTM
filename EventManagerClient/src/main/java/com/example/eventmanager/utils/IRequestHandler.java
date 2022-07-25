@@ -10,6 +10,8 @@ public interface IRequestHandler {
 
     int sendLogOutRequest();
 
+    int sendReplyJoinEventRequest(EventDTO event, UserDTO userDTO, String reply);
+
     int sendGetInvitationListRequest(UserDTO userDTO);
 
     int sendGetRequestListRequest(UserDTO userDTO);

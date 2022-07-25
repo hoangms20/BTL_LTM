@@ -19,6 +19,8 @@ public interface IResponseHandler {
 
     void handlerLogoutResponse(Response response, StringBuilder responseMess);
 
+    int handlerReplyJoinEventResponse(Response response, StringBuilder responseMess);
+
     List<EventDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess);
 
     List<RequestedEventDTO> handlerGetRequestListResponse(Response response, StringBuilder responseMess);

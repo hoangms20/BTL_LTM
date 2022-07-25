@@ -30,7 +30,7 @@ module com.example.eventmanager {
     opens com.example.eventmanager.view.invitation to javafx.fxml;
     exports com.example.eventmanager.view.invitation;
 
-    opens com.example.eventmanager.view.requestacceptant to javafx.fxml;
-    exports com.example.eventmanager.view.requestacceptant;
+    opens com.example.eventmanager.view.acceptant to javafx.fxml;
+    exports com.example.eventmanager.view.acceptant;
 
 }

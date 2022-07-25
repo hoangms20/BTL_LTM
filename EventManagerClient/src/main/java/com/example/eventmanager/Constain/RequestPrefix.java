@@ -8,6 +8,7 @@ public class RequestPrefix {
     public static final String GET_USER_LIST = "LISTUSER ";
     public static final String GET_EVENT_LIST = "LISTEVENT ";
     public static final String JOIN_EVENT = "REQUEST ";
+    public static final String REPLY_JOIN_EVENT = "REQUESTREPLY ";
     public static final String INVITATION = "INVITE ";
     public static final String INVITATION_REPLY = "INVITE_REPLY ";
     public static final String GET_INVITATION_LIST = "GETINVITATION ";

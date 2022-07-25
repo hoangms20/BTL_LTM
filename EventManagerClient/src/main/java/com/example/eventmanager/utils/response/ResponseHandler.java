@@ -304,6 +304,27 @@ public class ResponseHandler implements IResponseHandler {
     }
 
     @Override
+    public int handlerReplyJoinEventResponse(Response response, StringBuilder responseMess) {
+        if (response == null){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.OK_REPLY_JOIN_EVENT_CODE)){
+            responseMess.append(ResponseMessage.OK_MESS);
+            return 0;
+        }
+
+        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+        return -1;
+    }
+
+    @Override
     public List<EventDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess) {
         List<EventDTO> list = new ArrayList<>();
         if (response == null){

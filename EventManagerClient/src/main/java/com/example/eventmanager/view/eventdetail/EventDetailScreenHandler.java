@@ -1,12 +1,14 @@
 package com.example.eventmanager.view.eventdetail;
 
 import com.example.eventmanager.Constain.ScreenPathConstain;
+import com.example.eventmanager.controller.AcceptantController;
 import com.example.eventmanager.controller.EventDetailController;
 import com.example.eventmanager.controller.InvitationController;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.invitation.InvitationScreenHandler;
+import com.example.eventmanager.view.acceptant.AcceptantScreenHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -94,7 +96,13 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     }
 
     @FXML
-    void acceptRequest(ActionEvent event) {
+    void acceptRequest(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        AcceptantController controller = new AcceptantController();
+        AcceptantScreenHandler acceptantScreenHandler = new AcceptantScreenHandler(stage, ScreenPathConstain.ACCEPTANT_SCREEN_PATH, this.eventDTO);
+        acceptantScreenHandler.setScreenTitle("Acceptant screen");
+        acceptantScreenHandler.setBController(controller);
+        acceptantScreenHandler.show();
 
     }
 

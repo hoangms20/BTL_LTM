@@ -4,6 +4,7 @@ import com.example.eventmanager.controller.BaseController;
 import com.example.eventmanager.controller.InvitationController;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
+import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.FXMLScreenHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ public class InvitationItem extends FXMLScreenHandler {
     @FXML // fx:id="inviteButton"
     private Button inviteButton; // Value injected by FXMLLoader
 
+    private BaseScreenHandler prevScreen;
+
     private BaseController controller;
 
     private UserDTO userDTO;
@@ -31,6 +34,13 @@ public class InvitationItem extends FXMLScreenHandler {
         InvitationController invitationController = (InvitationController) this.controller;
         StringBuilder responseMess = new StringBuilder("");
         invitationController.invite(userDTO, eventDTO, responseMess);
+
+        if (invitationController.invite(userDTO, eventDTO, responseMess) != 0) {
+            getPrevScreen().announceError(responseMess.toString(), "Error");
+        } else {
+            getPrevScreen().announceInfo("Successfully!", "OK");
+        }
+
 
     }
 
@@ -44,5 +54,13 @@ public class InvitationItem extends FXMLScreenHandler {
         this.controller = controller;
         this.userDTO = userDTO;
         this.eventDTO = eventDTO;
+    }
+
+    public BaseScreenHandler getPrevScreen() {
+        return prevScreen;
+    }
+
+    public void setPrevScreen(BaseScreenHandler prevScreen) {
+        this.prevScreen = prevScreen;
     }
 }
