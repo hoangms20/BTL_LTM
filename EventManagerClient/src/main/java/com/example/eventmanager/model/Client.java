@@ -17,7 +17,6 @@ import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
 public class Client {
     private static Client client;
     private Socket clientSocket;
-    private DataInputStream input;
 
     private DataInputStream in;
     private DataOutputStream out;
@@ -43,7 +42,7 @@ public class Client {
             System.out.println("Connected");
 
             // takes input from terminal
-            this.input = new DataInputStream(System.in);
+            //this.input = new DataInputStream(System.in);
 
             // sends output to the socket
             this.out = new DataOutputStream(this.clientSocket.getOutputStream());
@@ -72,7 +71,7 @@ public class Client {
 
             // send message
             try {
-                line = input.readLine();
+                line = in.readLine();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -128,19 +127,9 @@ public class Client {
         String line = "";
 
         try {
-            while (true) {
-                int length = in.readInt();
-                byte[] array = new byte[length];
-                in.read(array);
-                System.out.println(array);
-
-                line = String.valueOf(this.in.readAllBytes());
-                System.out.println("line="+line);
-                this.cache.append(line);
-                if (checkDelimiter(this.cache.toString()))
-                    break;
-            }
-            System.out.println("buffRecv=" + line);
+            line = this.in.readLine();
+            this.cache.append(line);
+            System.out.println("buffRecv=" + this.cache.toString());
         } catch (IOException e) {
             e.printStackTrace();
             return -1;
@@ -172,7 +161,7 @@ public class Client {
     public void close() {
         // close the connection
         try {
-            this.input.close();
+            this.in.close();
             this.out.close();
             this.clientSocket.close();
         } catch (IOException e) {

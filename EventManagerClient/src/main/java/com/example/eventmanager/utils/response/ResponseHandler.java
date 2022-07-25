@@ -14,35 +14,35 @@ import static com.example.eventmanager.Constain.SocketConfig.*;
 public class ResponseHandler implements IResponseHandler {
     private Client client = Client.getClient();
 
-    private int lookUpDelimiter() {
+//    private int lookUpDelimiter() {
+//        StringBuilder cache = client.getCache();
+//        int n = cache.length();
+//        int m = DELIMITER.length();
+//
+//        int index = -1;
+//
+//        for (int i = 0; i < n - m + 1; i++) {
+//            if (cache.charAt(i) == DELIMITER.charAt(0)) {
+//                int d = 0;
+//                for (int j = 1; j < m; j++) {
+//                    if (cache.charAt(i + j) == DELIMITER.charAt(j)) {
+//                        d++;
+//                    }
+//                }
+//
+//                if (d == m - 1) {
+//                    index = i + m;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        return index;
+//    }
+
+    private String getAMessage() {
         StringBuilder cache = client.getCache();
-        int n = cache.length();
-        int m = DELIMITER.length();
-
-        int index = -1;
-
-        for (int i = 0; i < n - m + 1; i++) {
-            if (cache.charAt(i) == DELIMITER.charAt(0)) {
-                int d = 0;
-                for (int j = 1; j < m; j++) {
-                    if (cache.charAt(i + j) == DELIMITER.charAt(j)) {
-                        d++;
-                    }
-                }
-
-                if (d == m - 1) {
-                    index = i + m;
-                    break;
-                }
-            }
-        }
-
-        return index;
-    }
-
-    private String getAMessage(int start, int end) {
-        StringBuilder cache = client.getCache();
-        String mess = cache.substring(start, end - DELIMITER.length());
+        String mess = cache.toString();
 
         return mess;
     }
@@ -82,8 +82,8 @@ public class ResponseHandler implements IResponseHandler {
 
     }
 
-    private void updateCache(int start, int end){
-        client.getCache().delete(start, end);
+    private void updateCache(){
+        client.getCache().delete(0, client.getCache().length());
 
     }
 
@@ -192,14 +192,11 @@ public class ResponseHandler implements IResponseHandler {
 
     @Override
     public Response getResponses() {
-        int index = lookUpDelimiter();
-        if (index <= 0)
-            return null;
 
-        String mess = getAMessage(0, index);
+        String mess = getAMessage();
         Response response = new Response();
         messToResponse(response, mess);
-        updateCache(0, index);
+        updateCache();
 
         System.out.println("code=" + response.getCode());
         System.out.println("mess=" + response.getMessage());

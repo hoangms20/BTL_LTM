@@ -44,20 +44,11 @@ public class Server {
                 while (true) {
                     try {
                         cache = new StringBuilder("");
-                        do {
-                            int length = input.readShort();
-                            System.out.println("length="+length);
-                            byte[] array = new byte[length];
-                            input.readFully(array);
-                            System.out.println(new String(array, "UTF-8"));
-
-                            System.out.println("*********");
-                            line = String.valueOf(input.readLine());
-                            System.out.println("line=" + line+"***");
-                            cache.append(line);
-                            System.out.println("cache="+cache.toString()+"***");
-                        }while (!cache.substring(cache.length() - 2, cache.length()).equals(DELIMITER));
-                        System.out.println("cache="+cache.toString());
+                        System.out.println("*********");
+                        line = input.readLine();
+                        System.out.println("line=" + line + "***");
+                        cache.append(line);
+                        System.out.println("cache=" + cache.toString() + "***");
 
                         ResponseHandler responseHandler = new ResponseHandler();
                         Response response = new Response();
