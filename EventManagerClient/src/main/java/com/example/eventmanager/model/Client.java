@@ -126,6 +126,7 @@ public class Client {
 
         try {
             line = this.in.readLine();
+
             this.cache.append(line);
             System.out.println("buffRecv=" + this.cache.toString());
         } catch (IOException e) {

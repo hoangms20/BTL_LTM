@@ -44,6 +44,7 @@ public class ResponseHandler implements IResponseHandler {
 
         if (index == -1) {
             code.append(mess);
+            message.append(mess);
         }else {
             code.append(mess.substring(0, index));
             if (index < n - 1) {
@@ -370,24 +371,26 @@ public class ResponseHandler implements IResponseHandler {
 
     @Override
     public List<EventDTO> handlerGetEventListResponse(Response response, StringBuilder responseMess) {
-        List<EventDTO> list = new ArrayList<>();
-        if (response == null){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return list;
-        }
+//        List<EventDTO> list = new ArrayList<>();
+//        if (response == null){
+//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+//            return list;
+//        }
+//
+//        if (response.getCode().equals(ResponseCode.OK_LISTEVENT_CODE)){
+//            responseMess.append(ResponseMessage.OK_MESS);
+//            return responseMessToEventList(response.getMessage());
+//        }
+//
+//        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
+//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+//            return list;
+//        }
+//
+//        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+//        return list;
 
-        if (response.getCode().equals(ResponseCode.OK_LISTEVENT_CODE)){
-            responseMess.append(ResponseMessage.OK_MESS);
-            return responseMessToEventList(response.getMessage());
-        }
-
-        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return list;
-        }
-
-        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-        return list;
+        return responseMessToEventList(response.getMessage());
     }
 
     @Override
