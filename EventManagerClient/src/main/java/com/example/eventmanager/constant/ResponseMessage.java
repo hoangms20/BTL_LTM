@@ -11,6 +11,7 @@ public class ResponseMessage {
 
     //sign up
     public static final String NOT_ALLOWED_CHARACTER_MESS = "Username or password is include not allowed character!";
+    public static final String NO_USER_OR_PASSWORD_SIGN_UP_MESS = "No username!";
     public static final String EXITED_USER_MESS = "This username is existed!";
 
     //login

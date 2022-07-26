@@ -283,6 +283,11 @@ public class ResponseHandler implements IResponseHandler {
             return;
         }
 
+        if (response.getCode().equals(ResponseCode.NO_USER_OR_PASSWORD_SIGN_UP_CODE)){
+            responseMess.append(ResponseMessage.NO_USER_OR_PASSWORD_SIGN_UP_MESS);
+            return;
+        }
+
 
         if (response.getCode().equals(ResponseCode.EXITED_USER_SIGN_UP_CODE)){
             responseMess.append(ResponseMessage.EXITED_USER_MESS);
