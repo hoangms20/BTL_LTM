@@ -15,7 +15,7 @@ public class ResponseMessage {
     public static final String ILLEGAL_TIME_CREATE_EVENT_MESS = "Time must begin from tomorrow!";
 
     //invitation
-    public static final String NOT_EXIST_RECEIVER_INVITATION_MESS = "Not existed this receiver!";
+    public static final String NOT_EXIST_RECEIVER_OR_SENDER_MESS = "Not existed this receiver or sender!";
 
     //something wrong
     public static final String SOMETHING_WRONG_MESS = "Somethings Wrong!";

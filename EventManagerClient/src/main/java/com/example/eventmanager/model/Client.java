@@ -98,7 +98,6 @@ public class Client {
         int left = size;
         StringBuilder mess = new StringBuilder(buffSend);
         int start = 0;
-        System.out.println("buffSend=" + buffSend);
 
         try {
             while (left >= BUFF_SIZE) {
@@ -110,8 +109,11 @@ public class Client {
 
             if (left > 0) {
                 String s = mess.substring(start, start + left);
+                left = left - s.length();
                 this.out.writeBytes(s);
             }
+            this.out.flush();
+            System.out.println("buffSend=" + buffSend);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -125,8 +127,8 @@ public class Client {
         String line = "";
 
         try {
+            System.out.println("receiving");
             line = this.in.readLine();
-
             this.cache.append(line);
             System.out.println("buffRecv=" + this.cache.toString());
         } catch (IOException e) {

@@ -71,7 +71,7 @@ public class CreateEventScreenHandler extends BaseScreenHandler {
     }
 
     private boolean invalidFields() {
-        if (eventName.getText() == null || eventName.getText().equals("")) {
+        if (eventName.getText() == null || eventName.getText().trim().equals("")) {
             announceWarning("Please Enter Event Name!", "Warning");
             return false;
         }
@@ -81,12 +81,12 @@ public class CreateEventScreenHandler extends BaseScreenHandler {
             return false;
         }
 
-        if (place.getText() == null || place.getText().equals("")) {
+        if (place.getText() == null || place.getText().trim().equals("")) {
             announceWarning("Please Enter Place!", "Warning");
             return false;
         }
 
-        if (description.getText() == null || description.getText().equals("")) {
+        if (description.getText() == null || description.getText().trim().equals("")) {
             announceWarning("Please Enter Description!", "Warning");
             return false;
         }

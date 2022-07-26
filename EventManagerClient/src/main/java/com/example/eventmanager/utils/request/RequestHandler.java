@@ -80,7 +80,7 @@ public class RequestHandler implements IRequestHandler {
         List<String> messList = new ArrayList<>();
 
         //set request message
-        String rq = setRequestMessage(RequestPrefix.LOG_OUT, messList);
+        String rq = RequestPrefix.LOG_OUT + DELIMITER;
 
         if (sendRequest(rq) == -1) {
             return -1;
@@ -101,43 +101,6 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.CREATE_EVENT, messList);
-
-        if (sendRequest(rq) == -1) {
-            return -1;
-        }
-
-        return 0;
-    }
-
-    @Override
-    public int sendJoinEventRequest(EventDTO event, UserDTO userDTO) {
-        //add every message info to a list
-        List<String> messList = new ArrayList<>();
-        messList.add(userDTO.getUsername());
-        messList.add(event.getCreatedBy());
-        messList.add(event.getId());
-
-        //set request message
-        String rq = setRequestMessage(RequestPrefix.JOIN_EVENT, messList);
-
-        if (sendRequest(rq) == -1) {
-            return -1;
-        }
-
-        return 0;
-    }
-
-    @Override
-    public int sendReplyJoinEventRequest(EventDTO event, UserDTO userDTO, String reply) {
-        //add every message info to a list
-        List<String> messList = new ArrayList<>();
-        messList.add(event.getCreatedBy());
-        messList.add(userDTO.getUsername());
-        messList.add(event.getId());
-        messList.add(reply);
-
-        //set request message
-        String rq = setRequestMessage(RequestPrefix.REPLY_JOIN_EVENT, messList);
 
         if (sendRequest(rq) == -1) {
             return -1;
@@ -212,6 +175,44 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+
+    @Override
+    public int sendJoinEventRequest(EventDTO event, UserDTO userDTO) {
+        //add every message info to a list
+        List<String> messList = new ArrayList<>();
+        messList.add(userDTO.getUsername());
+        messList.add(event.getCreatedBy());
+        messList.add(event.getId());
+
+        //set request message
+        String rq = setRequestMessage(RequestPrefix.JOIN_EVENT, messList);
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int sendReplyJoinEventRequest(EventDTO event, UserDTO userDTO, String reply) {
+        //add every message info to a list
+        List<String> messList = new ArrayList<>();
+        messList.add(event.getCreatedBy());
+        messList.add(userDTO.getUsername());
+        messList.add(event.getId());
+        messList.add(reply);
+
+        //set request message
+        String rq = setRequestMessage(RequestPrefix.JOIN_EVENT_REPLY, messList);
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
     @Override
     public int sendInvitationRequest(UserDTO userDTO, EventDTO eventDTO) {
         //add every message info to a list
@@ -222,6 +223,42 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.INVITATION, messList);
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int sendReplyInvitationRequest(EventDTO event, UserDTO userDTO, String reply) {
+        //add every message info to a list
+        List<String> messList = new ArrayList<>();
+        messList.add(userDTO.getUsername());
+        messList.add(event.getCreatedBy());
+        messList.add(event.getId());
+        messList.add(reply);
+
+        //set request message
+        String rq = setRequestMessage(RequestPrefix.INVITATION_REPLY, messList);
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int sendGetAttendedUserListRequest(EventDTO eventDTO) {
+        //add every message info to a list
+        List<String> messList = new ArrayList<>();
+        messList.add(eventDTO.getId());
+
+        //set request message
+        //String rq = setRequestMessage(RequestPrefix.GET_ATTENDED_USER_LIST, messList);
+        String rq = RequestPrefix.GET_ATTENDED_USER_LIST + eventDTO.getId() + DELIMITER;
 
         if (sendRequest(rq) == -1) {
             return -1;

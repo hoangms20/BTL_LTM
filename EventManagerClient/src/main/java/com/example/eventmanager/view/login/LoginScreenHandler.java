@@ -83,12 +83,12 @@ public class LoginScreenHandler extends BaseScreenHandler implements Initializab
     }
 
     private boolean invalidFields() {
-        if (username.getText() == null || username.getText().equals("")){
+        if (username.getText() == null || username.getText().trim().equals("")){
             announceWarning("Please Enter Your User Name!", "Warning");
             return false;
         }
 
-        if (password.getText() == null || password.getText().equals("")){
+        if (password.getText() == null || password.getText().trim().equals("")){
             announceWarning("Please Enter Your Password!", "Warning");
             return false;
         }

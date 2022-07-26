@@ -59,7 +59,6 @@ public class ResponseHandler implements IResponseHandler {
 
     private void updateCache(){
         client.getCache().delete(0, client.getCache().length());
-
     }
 
 
@@ -122,6 +121,21 @@ public class ResponseHandler implements IResponseHandler {
         return event;
     }
 
+    public EventRequestDTO dataToAInvitedEvent(String mess){
+        List<String> list = splitMessage(mess, SEPARATOR_LEVEL_1);
+        EventRequestDTO event = new EventRequestDTO();
+
+        for (int i = list.size(); i <= 2 ; i++){
+            list.add("");
+        }
+
+        event.setSender(list.get(0));
+        event.setReceiver(list.get(1));
+        event.setEventId(list.get(2));
+
+        return event;
+    }
+
     public List<EventDTO> responseMessToEventList(String mess){
         List<EventDTO> eventEntityList = new ArrayList<>();
 
@@ -147,6 +161,21 @@ public class ResponseHandler implements IResponseHandler {
         for (String s:
                 list) {
             eventRequestDTOS.add(dataToARequestedEvent(s));
+        }
+
+        return eventRequestDTOS;
+    }
+
+    public List<EventRequestDTO> responseMessToEventInvitationList(String mess){
+        List<EventRequestDTO> eventRequestDTOS = new ArrayList<>();
+
+        if (mess == null || mess.equals(""))    return eventRequestDTOS;
+
+        List<String> list = splitMessage(mess, SEPARATOR_LEVEL_2);
+
+        for (String s:
+                list) {
+            eventRequestDTOS.add(dataToAInvitedEvent(s));
         }
 
         return eventRequestDTOS;
@@ -278,51 +307,9 @@ public class ResponseHandler implements IResponseHandler {
     }
 
     @Override
-    public int handlerJoinEventResponse(Response response, StringBuilder responseMess) {
-        if (response == null){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return -1;
-        }
-
-        if (response.getCode().equals(ResponseCode.OK_JOIN_EVENT_CODE)){
-            responseMess.append(ResponseMessage.OK_MESS);
-            return 0;
-        }
-
-        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return -1;
-        }
-
-        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-        return -1;
-    }
-
-    @Override
-    public int handlerReplyJoinEventResponse(Response response, StringBuilder responseMess) {
-        if (response == null){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return -1;
-        }
-
-        if (response.getCode().equals(ResponseCode.OK_REPLY_JOIN_EVENT_CODE)){
-            responseMess.append(ResponseMessage.OK_MESS);
-            return 0;
-        }
-
-        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-            return -1;
-        }
-
-        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-        return -1;
-    }
-
-    @Override
     public List<EventRequestDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess) {
 
-        return responseMessToEventRequestList(response.getMessage());
+        return responseMessToEventInvitationList(response.getMessage());
     }
 
     @Override
@@ -344,6 +331,59 @@ public class ResponseHandler implements IResponseHandler {
     }
 
     @Override
+    public List<UserDTO> handlerGetUserAttendListResponse(Response response, StringBuilder responseMess) {
+
+        return responseMessToUserList(response.getMessage());
+    }
+
+    @Override
+    public int handlerRequestResponse(Response response, StringBuilder responseMess) {
+        if (response == null){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.OK_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.OK_MESS);
+            return 0;
+        }
+
+        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+        return -1;
+    }
+
+    @Override
+    public int handlerReplyRequestResponse(Response response, StringBuilder responseMess) {
+        if (response == null){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.OK_REPLY_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.OK_MESS);
+            return 0;
+        }
+
+        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+        return -1;
+    }
+
+    @Override
     public int handlerInviteResponse(Response response, StringBuilder responseMess) {
         if (response == null){
             responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
@@ -355,9 +395,35 @@ public class ResponseHandler implements IResponseHandler {
             return 0;
         }
 
-        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_INVITATION_CODE)){
-            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_INVITATION_MESS);
+        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE)){
+            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
             return 0;
+        }
+
+        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+        return -1;
+    }
+
+    @Override
+    public int handlerReplyInvitationResponse(Response response, StringBuilder responseMess) {
+        if (response == null){
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.OK_REPLY_INVITATION_CODE)){
+            responseMess.append(ResponseMessage.OK_MESS);
+            return 0;
+        }
+
+        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE)){
+            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
+            return -1;
         }
 
         if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){

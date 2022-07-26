@@ -17,13 +17,17 @@ public class ResponseCode {
 
     //invitation
     public static final String OK_INVITATION_CODE = "40";
-    public static final String NOT_EXIST_RECEIVER_INVITATION_CODE = "41";
+    public static final String NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE = "41";
 
-    //create new event
-    public static final String OK_JOIN_EVENT_CODE = "60";
+    //reply invitation
+    public static final String OK_REPLY_INVITATION_CODE = "50";
 
-    //create new event
-    public static final String OK_REPLY_JOIN_EVENT_CODE = "70";
+    //request
+    public static final String OK_REQUEST_CODE = "60";
+    public static final String NOT_EXIST_RECEIVER_OR_SENDER_REQUEST_CODE = "61";
+
+    //reply request
+    public static final String OK_REPLY_REQUEST_CODE = "70";
 
     //Log out
     public static final String OK_LOG_OUT_CODE = "120";

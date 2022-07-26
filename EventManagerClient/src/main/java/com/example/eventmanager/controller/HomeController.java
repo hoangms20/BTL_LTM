@@ -3,7 +3,6 @@ package com.example.eventmanager.controller;
 import com.example.eventmanager.Constain.ResponseMessage;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.Response;
-import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.utils.IRequestHandler;
 import com.example.eventmanager.utils.IResponseHandler;
 import com.example.eventmanager.utils.request.RequestHandler;
@@ -78,19 +77,6 @@ public class HomeController extends BaseController{
             return -1;
 
         return 0;
-    }
-
-    public int getNumOfAnnouncement () {
-        AnnouncementController controller = new AnnouncementController();
-
-        int num = 0;
-        StringBuilder s = new StringBuilder("");
-        num += controller.getListInvitedEvent(s).size();
-
-        s = new StringBuilder("");
-        num += controller.getListRequestedEvent(s).size();
-
-        return num;
     }
 
 }

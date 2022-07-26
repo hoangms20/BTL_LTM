@@ -88,6 +88,94 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     private List<UserDTO> userDTOList;
     private boolean isInvited;
 
+    public EventDetailScreenHandler(Stage stage, String screenPath) throws IOException {
+        super(stage, screenPath);
+    }
+
+    public EventDetailScreenHandler(Stage stage, String screenPath, EventDTO eventDTO) throws IOException {
+        super(stage, screenPath);
+        setEventDTO(eventDTO);
+    }
+
+    public List<UserDTO> getUserDTOList() {
+        return userDTOList;
+    }
+
+    public void setUserDTOList(List<UserDTO> userDTOList) {
+        this.userDTOList = userDTOList;
+    }
+
+    // This method is called by the FXMLLoader when initialization is complete
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.setImage(logo, "images/logo.png");
+
+        logoutMenuItem.setDisable(true);
+        changePasswordMenuItem.setDisable(true);
+    }
+
+    @Override
+    public void show() {
+        EventDetailController controller = (EventDetailController) getBController();
+        if (eventDTO.getCreatedBy().equals(controller.getUserName())){
+            this.joinRequestButton.setDisable(true);
+            this.joinRequestButton.setVisible(false);
+            this.inviteButton.setDisable(false);
+            this.acceptButton.setDisable(false);
+            this.announcementLabel.setVisible(true);
+            this.acceptInvitationBtn.setDisable(true);
+            this.acceptInvitationBtn.setVisible(false);
+        }
+        else {
+            this.joinRequestButton.setDisable(false);
+            this.joinRequestButton.setVisible(true);
+            this.inviteButton.setDisable(true);
+            this.acceptButton.setDisable(true);
+            this.announcementLabel.setVisible(false);
+        }
+
+        updateJoinedUserList();
+        displayUserAttendList(getUserDTOList());
+
+        super.show();
+    }
+
+    public void setEventDTO(EventDTO eventDTO) {
+        this.eventDTO = eventDTO;
+
+        eventId.setText(eventDTO.getId());
+        eventName.setText(eventDTO.getName());
+        time.setText(eventDTO.getTime());
+        place.setText(eventDTO.getPlace());
+        createdBy.setText(eventDTO.getCreatedBy());
+
+        Text text = new Text(eventDTO.getDescription());
+        text.setFont(font);
+        description.getChildren().add(text);
+    }
+
+    public void updateJoinedUserList() {
+        EventDetailController controller = (EventDetailController) getBController();
+        StringBuilder responseMess = new StringBuilder("");
+        setUserDTOList(controller.getListUserAttend(eventDTO, responseMess));
+    }
+
+    private void displayUserAttendList(List<UserDTO> list) {
+        this.containerUser.getChildren().clear();
+
+        if (list != null) {
+            for (UserDTO userDTO :
+                    list) {
+                try {
+                    UserItem userItem = new UserItem(ScreenPathConstain.USER_ITEM_SCREEN_PATH, userDTO);
+                    this.containerUser.getChildren().add(userItem.getContent());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     @FXML
     void invite(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -119,7 +207,7 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
             StringBuilder responseMess = new StringBuilder("");
 
-            if (controller.joinEvent(eventDTO, userDTO, responseMess) != 0) {
+            if (controller.requestToJoin(eventDTO, userDTO, responseMess) != 0) {
                 announceError(responseMess.toString(), "Error");
             } else {
                 announceInfo("Successfully!", "OK");
@@ -131,97 +219,11 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     @FXML
     void reloadJoinedUserList(MouseEvent event) {
         updateJoinedUserList();
-        displayUserList(getUserDTOList());
+        displayUserAttendList(getUserDTOList());
     }
 
     @FXML
     void acceptInvitation(ActionEvent event) {
 
-    }
-
-    public EventDetailScreenHandler(Stage stage, String screenPath) throws IOException {
-        super(stage, screenPath);
-    }
-
-    public EventDetailScreenHandler(Stage stage, String screenPath, EventDTO eventDTO) throws IOException {
-        super(stage, screenPath);
-        setEventDTO(eventDTO);
-    }
-
-    @Override
-    public void show() {
-        EventDetailController controller = (EventDetailController) getBController();
-        if (eventDTO.getCreatedBy().equals(controller.getUserName())){
-            this.joinRequestButton.setDisable(true);
-            this.joinRequestButton.setVisible(false);
-            this.inviteButton.setDisable(false);
-            this.acceptButton.setDisable(false);
-            this.announcementLabel.setVisible(true);
-        }
-        else {
-            this.joinRequestButton.setDisable(false);
-            this.joinRequestButton.setVisible(true);
-            this.inviteButton.setDisable(true);
-            this.acceptButton.setDisable(true);
-            this.announcementLabel.setVisible(false);
-        }
-
-        updateJoinedUserList();
-        displayUserList(getUserDTOList());
-
-        super.show();
-    }
-
-    public void setEventDTO(EventDTO eventDTO) {
-        this.eventDTO = eventDTO;
-
-        eventId.setText(eventDTO.getId());
-        eventName.setText(eventDTO.getName());
-        time.setText(eventDTO.getTime());
-        place.setText(eventDTO.getPlace());
-        createdBy.setText(eventDTO.getCreatedBy());
-
-        Text text = new Text(eventDTO.getDescription());
-        text.setFont(font);
-        description.getChildren().add(text);
-    }
-
-    // This method is called by the FXMLLoader when initialization is complete
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        super.setImage(logo, "images/logo.png");
-
-        logoutMenuItem.setDisable(true);
-        changePasswordMenuItem.setDisable(true);
-    }
-
-    public void updateJoinedUserList() {
-        EventDetailController controller = (EventDetailController) getBController();
-        StringBuilder responseMess = new StringBuilder("");
-        setUserDTOList(controller.getListUser(responseMess));
-    }
-
-    public List<UserDTO> getUserDTOList() {
-        return userDTOList;
-    }
-
-    public void setUserDTOList(List<UserDTO> userDTOList) {
-        this.userDTOList = userDTOList;
-    }
-
-    private void displayUserList(List<UserDTO> list) {
-        this.containerUser.getChildren().clear();
-
-        if (list != null) {
-            for (UserDTO userDTO :
-                    list) {
-                try {
-                    UserItem userItem = new UserItem(ScreenPathConstain.USER_ITEM_SCREEN_PATH, userDTO);
-                    this.containerUser.getChildren().add(userItem.getContent());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 }

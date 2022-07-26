@@ -68,7 +68,7 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
             announceInfo("Sign Up Successfully!\nPlease Login by User Which you have created!", "Sign up");
             getPreviousScreen().show();
         } else {
-            announceWarning("Sign up", responseMess.toString());
+            announceWarning( responseMess.toString(), "Sign up");
         }
     }
 
@@ -78,17 +78,17 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
     }
 
     private boolean invalidFields() {
-        if (username.getText() == null || username.getText().equals("")) {
+        if (username.getText() == null || username.getText().trim().equals("")) {
             announceWarning("Please Enter User Name!", "Warning");
             return false;
         }
 
-        if (password.getText() == null || password.getText().equals("")) {
+        if (password.getText() == null || password.getText().trim().equals("")) {
             announceWarning("Please Enter Password!", "Warning");
             return false;
         }
 
-        if (repassword.getText() == null || repassword.getText().equals("")) {
+        if (repassword.getText() == null || repassword.getText().trim().equals("")) {
             announceWarning("Please Enter Repassword!", "Warning");
             return false;
         }

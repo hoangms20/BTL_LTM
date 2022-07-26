@@ -25,4 +25,8 @@ public interface IRequestHandler {
     int sendJoinEventRequest(EventDTO event, UserDTO userDTO);
 
     int sendInvitationRequest(UserDTO userDTO, EventDTO eventDTO);
+
+    int sendReplyInvitationRequest(EventDTO event, UserDTO userDTO, String reply);
+
+    int sendGetAttendedUserListRequest(EventDTO eventDTO);
 }

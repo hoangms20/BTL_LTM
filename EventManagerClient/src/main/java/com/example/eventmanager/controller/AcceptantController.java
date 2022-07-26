@@ -85,7 +85,7 @@ public class AcceptantController extends BaseController {
         Response response = responseHandler.getResponses();
 
         //handle login response
-        responseHandler.handlerReplyJoinEventResponse(response, responseMess);
+        responseHandler.handlerReplyRequestResponse(response, responseMess);
 
         //check responseMess == OK?
         if (!responseMess.toString().equals(ResponseMessage.OK_MESS))

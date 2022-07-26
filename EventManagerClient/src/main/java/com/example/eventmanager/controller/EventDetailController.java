@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EventDetailController extends BaseController{
 
-    public int joinEvent(EventDTO event, UserDTO user, StringBuilder responseMess){
+    public int requestToJoin(EventDTO event, UserDTO user, StringBuilder responseMess){
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -37,7 +37,7 @@ public class EventDetailController extends BaseController{
         Response response = responseHandler.getResponses();
 
         //handle login response
-        responseHandler.handlerJoinEventResponse(response, responseMess);
+        responseHandler.handlerRequestResponse(response, responseMess);
 
         //check responseMess == OK?
         if (!responseMess.toString().equals(ResponseMessage.OK_MESS))
@@ -46,14 +46,14 @@ public class EventDetailController extends BaseController{
         return 0;
     }
 
-    public List<UserDTO> getListUser(StringBuilder responseMess){
+    public List<UserDTO> getListUserAttend(EventDTO eventDTO, StringBuilder responseMess){
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
         List<UserDTO> userDTOList;
 
         //send login message
-        ret = requestHandler.sendGetUserListRequest();
+        ret = requestHandler.sendGetAttendedUserListRequest(eventDTO);
         //check send successfully?
         if (ret != 0) {
             responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
@@ -71,13 +71,7 @@ public class EventDetailController extends BaseController{
         Response response = responseHandler.getResponses();
 
         //handle login response
-        userDTOList = responseHandler.handlerGetUserListResponse(response, responseMess);
-
-        //remove user logged in from list
-        for (UserDTO u:
-                userDTOList) {
-            System.out.println(u.getUsername());
-        }
+        userDTOList = responseHandler.handlerGetUserAttendListResponse(response, responseMess);
 
         return userDTOList;
     }

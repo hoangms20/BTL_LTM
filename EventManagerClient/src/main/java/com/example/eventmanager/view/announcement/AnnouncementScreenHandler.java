@@ -37,12 +37,12 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
     }
 
     private String setAnnouncementForAInvitedEvent(EventRequestDTO event) {
-        String s = event.getSender() + " has \"invited\" you to join a event: (" + event.getEventId() + ")" + event.getSender();
+        String s = event.getSender() + " has \"invited\" you to join a event: (" + event.getEventId() + ")";
         return s;
     }
 
     private String setAnnouncementForARequestedEvent(EventRequestDTO event) {
-        String s = event.getSender() + " has \"requested\" to join a event of you: (" + event.getEventId() + ")" + event.getReceiver();
+        String s = event.getSender() + " has \"requested\" to join a event of you: (" + event.getEventId() + ")";
         return s;
     }
 

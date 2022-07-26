@@ -58,12 +58,19 @@ public class InvitationScreenHandler extends BaseScreenHandler {
         this.containerUser.getChildren().clear();
 
         if (list != null) {
+            int i = 0;
             for (UserDTO userDTO :
                     list) {
                 try {
                     InvitationItem item = new InvitationItem(ScreenPathConstain.INVITATION_ITEM_SCREEN_PATH, userDTO, this.eventDTO, getBController());
+                    if (i % 2 == 0){
+                        item.getFrame().setStyle("-fx-background-color: #FEFBE7");
+                    }else {
+                        item.getFrame().setStyle("-fx-background-color: #C4DDFF");
+                    }
                     item.setPrevScreen(this);
                     this.containerUser.getChildren().add(item.getContent());
+                    i++;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

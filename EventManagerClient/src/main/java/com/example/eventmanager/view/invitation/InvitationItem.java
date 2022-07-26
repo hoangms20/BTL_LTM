@@ -10,10 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
 public class InvitationItem extends FXMLScreenHandler {
+
+    @FXML // fx:id="frame"
+    private HBox frame; // Value injected by FXMLLoader
 
     @FXML // fx:id="username"
     private Label username; // Value injected by FXMLLoader
@@ -63,4 +67,9 @@ public class InvitationItem extends FXMLScreenHandler {
     public void setPrevScreen(BaseScreenHandler prevScreen) {
         this.prevScreen = prevScreen;
     }
+
+    public HBox getFrame() {
+        return frame;
+    }
+
 }

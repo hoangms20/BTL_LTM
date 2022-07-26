@@ -29,8 +29,6 @@ import java.util.ResourceBundle;
 
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
 
-    public int num = 0;
-
     @FXML // fx:id="scrollPane"
     private ScrollPane scrollPane; // Value injected by FXMLLoader
 
@@ -42,9 +40,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML // fx:id="announceImage"
     private ImageView announceImage; // Value injected by FXMLLoader
-
-    @FXML // fx:id="numOfAnnounce"
-    private Label numOfAnnounce; // Value injected by FXMLLoader
 
     @FXML // fx:id="logoutMenuItem"
     private MenuItem logoutMenuItem; // Value injected by FXMLLoader
@@ -73,14 +68,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         super(stage, screenPath);
     }
 
-    public Label getNumOfAnnounce() {
-        return numOfAnnounce;
-    }
-
-    public void setNumOfAnnounce(int num) {
-        getNumOfAnnounce().setText(String.valueOf(num));
-    }
-
     // This method is called by the FXMLLoader when initialization is complete
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,8 +83,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
         updateEventList();
         displayAllEvent();
-
-        setNumOfAnnounce(controller.getNumOfAnnouncement());
 
         super.show();
     }
