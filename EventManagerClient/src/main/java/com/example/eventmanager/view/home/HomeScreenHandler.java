@@ -52,6 +52,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @FXML // fx:id="logoutMenuItem"
     private MenuItem closeMenuItem; // Value injected by FXMLLoader
 
+    @FXML // fx:id="username"
+    private Label username; // Value injected by FXMLLoader
+
     @FXML // fx:id="createEventButton"
     private Button createEventButton; // Value injected by FXMLLoader
 
@@ -61,12 +64,21 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @FXML // fx:id="seeAllEventButton"
     private Button seeAllEventButton; // Value injected by FXMLLoader
 
-    private List<EventDTO> eventList;
+    @FXML // fx:id="refreshBtn"
+    private Button refreshBtn; // Value injected by FXMLLoader
 
-    private List<UserDTO> userList;
+    private List<EventDTO> eventList;
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
+    }
+
+    public Label getNumOfAnnounce() {
+        return numOfAnnounce;
+    }
+
+    public void setNumOfAnnounce(int num) {
+        getNumOfAnnounce().setText(String.valueOf(num));
     }
 
     // This method is called by the FXMLLoader when initialization is complete
@@ -80,9 +92,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @Override
     public void show() {
         HomeController controller = (HomeController) getBController();
-        StringBuilder responseMess = new StringBuilder("");
-        setEventList(controller.getListEvent(responseMess));
+        username.setText(controller.getUserName());
+
+        updateEventList();
         displayAllEvent();
+
+        setNumOfAnnounce(controller.getNumOfAnnouncement());
 
         super.show();
     }
@@ -95,12 +110,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         this.eventList = eventList;
     }
 
-    public List<UserDTO> getUserList() {
-        return userList;
-    }
-
-    public void setUserList(List<UserDTO> userList) {
-        this.userList = userList;
+    private void updateEventList() {
+        HomeController controller = (HomeController) getBController();
+        StringBuilder responseMess = new StringBuilder("");
+        setEventList(controller.getListEvent(responseMess));
     }
 
     private void displayAllEvent(){
@@ -111,6 +124,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         List<EventDTO> eventDTOList = new ArrayList<>();
         List<EventDTO> list = getEventList();
         String username = getBController().getUserName();
+
+        if (list == null)   return;
 
         for (EventDTO event :
                 list) {
@@ -173,10 +188,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     }
 
     @FXML
-    public void reloadEventList(MouseEvent event) {
-        HomeController controller = (HomeController) getBController();
-        StringBuilder responseMess = new StringBuilder("");
-        setEventList(controller.getListEvent(responseMess));
+    void refreshEventList(ActionEvent event) {
+        updateEventList();
         displayAllEvent();
     }
 

@@ -59,7 +59,7 @@
                   <Reflection />
                </effect>
             </ImageView>
-            <Label layoutX="201.0" layoutY="29.0" prefHeight="70.0" prefWidth="417.0" text="EVENT MANAGER" textFill="#3639e4" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="201.0" AnchorPane.topAnchor="29.0">
+            <Label layoutX="200.0" layoutY="29.0" prefHeight="70.0" prefWidth="417.0" text="EVENT MANAGER" textFill="#3639e4" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="201.0" AnchorPane.topAnchor="29.0">
                <font>
                   <Font name="Calibri Bold Italic" size="56.0" />
                </font>
@@ -93,6 +93,11 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Label fx:id="username" layoutX="200.0" layoutY="100.0" prefHeight="18.0" prefWidth="150.0" text="User1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -102,7 +107,7 @@
    <left>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="641.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="createEventButton" alignment="CENTER" contentDisplay="CENTER" layoutY="160.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="74.0" prefWidth="190.0" text="Create Event" textAlignment="JUSTIFY" textFill="#377d71" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+            <Button fx:id="createEventButton" alignment="CENTER" contentDisplay="CENTER" layoutY="150.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="74.0" prefWidth="190.0" text="Create Event" textAlignment="JUSTIFY" textFill="#377d71" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <font>
                   <Font name="Cambria" size="22.0" />
                </font>
@@ -110,7 +115,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="seeYourEventButton" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="280.0" mnemonicParsing="false" onAction="#seeYourEvent" prefHeight="74.0" prefWidth="190.0" text="Your Events" textAlignment="JUSTIFY" textFill="#f94c66" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+            <Button fx:id="seeYourEventButton" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="250.0" mnemonicParsing="false" onAction="#seeYourEvent" prefHeight="74.0" prefWidth="190.0" text="Your Events" textAlignment="JUSTIFY" textFill="#f94c66" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <font>
                   <Font name="Cambria" size="22.0" />
                </font>
@@ -118,7 +123,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="seeAllEventButton" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="400.0" mnemonicParsing="false" onAction="#seeAllEvent" prefHeight="74.0" prefWidth="190.0" text="All Events" textAlignment="JUSTIFY" textFill="#1154da" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+            <Button fx:id="seeAllEventButton" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="350.0" mnemonicParsing="false" onAction="#seeAllEvent" prefHeight="74.0" prefWidth="190.0" text="All Events" textAlignment="JUSTIFY" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <font>
+                  <Font name="Cambria" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="refreshBtn" alignment="CENTER" contentDisplay="CENTER" layoutY="450.0" mnemonicParsing="false" onAction="#refreshEventList" prefHeight="74.0" prefWidth="190.0" text="Refresh" textAlignment="JUSTIFY" textFill="#1154da" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <font>
                   <Font name="Cambria" size="22.0" />
                </font>

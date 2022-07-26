@@ -108,16 +108,16 @@ public class ResponseHandler implements IResponseHandler {
         return event;
     }
 
-    public RequestedEventDTO dataToARequestedEvent(String mess){
+    public EventRequestDTO dataToARequestedEvent(String mess){
         List<String> list = splitMessage(mess, SEPARATOR_LEVEL_1);
-        RequestedEventDTO event = new RequestedEventDTO();
+        EventRequestDTO event = new EventRequestDTO();
 
         for (int i = list.size(); i <= 1 ; i++){
             list.add("");
         }
 
         event.setSender(list.get(0));
-        event.setId(list.get(1));
+        event.setEventId(list.get(1));
 
         return event;
     }
@@ -137,19 +137,19 @@ public class ResponseHandler implements IResponseHandler {
         return eventEntityList;
     }
 
-    public List<RequestedEventDTO> responseMessToRequestedEventList(String mess){
-        List<RequestedEventDTO> requestedEventDTOS = new ArrayList<>();
+    public List<EventRequestDTO> responseMessToEventRequestList(String mess){
+        List<EventRequestDTO> eventRequestDTOS = new ArrayList<>();
 
-        if (mess == null || mess.equals(""))    return requestedEventDTOS;
+        if (mess == null || mess.equals(""))    return eventRequestDTOS;
 
         List<String> list = splitMessage(mess, SEPARATOR_LEVEL_2);
 
         for (String s:
                 list) {
-            requestedEventDTOS.add(dataToARequestedEvent(s));
+            eventRequestDTOS.add(dataToARequestedEvent(s));
         }
 
-        return requestedEventDTOS;
+        return eventRequestDTOS;
     }
 
     @Override
@@ -320,97 +320,25 @@ public class ResponseHandler implements IResponseHandler {
     }
 
     @Override
-    public List<EventDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess) {
-//        List<EventDTO> list = new ArrayList<>();
-//        if (response == null){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.OK_LISTINVITATION_CODE)){
-//            responseMess.append(ResponseMessage.OK_MESS);
-//            return responseMessToEventList(response.getMessage());
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//        return list;
+    public List<EventRequestDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess) {
 
-        return responseMessToEventList(response.getMessage());
+        return responseMessToEventRequestList(response.getMessage());
     }
 
     @Override
-    public List<RequestedEventDTO> handlerGetRequestListResponse(Response response, StringBuilder responseMess) {
-//        List<RequestedEventDTO> list = new ArrayList<>();
-//        if (response == null){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.OK_LISTREQUEST_CODE)){
-//            responseMess.append(ResponseMessage.OK_MESS);
-//            return responseMessToRequestedEventList((response.getMessage()));
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//        return list;
+    public List<EventRequestDTO> handlerGetRequestListResponse(Response response, StringBuilder responseMess) {
 
-        return responseMessToRequestedEventList((response.getMessage()));
+        return responseMessToEventRequestList((response.getMessage()));
     }
 
     @Override
     public List<UserDTO> handlerGetUserListResponse(Response response, StringBuilder responseMess) {
-//        List<UserDTO> list = new ArrayList<>();
-//        if (response == null){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.OK_LISTUSER_CODE)){
-//            responseMess.append(ResponseMessage.OK_MESS);
-//            return responseMessToUserList(response.getMessage());
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//        return list;
 
         return responseMessToUserList(response.getMessage());
     }
 
     @Override
     public List<EventDTO> handlerGetEventListResponse(Response response, StringBuilder responseMess) {
-//        List<EventDTO> list = new ArrayList<>();
-//        if (response == null){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.OK_LISTEVENT_CODE)){
-//            responseMess.append(ResponseMessage.OK_MESS);
-//            return responseMessToEventList(response.getMessage());
-//        }
-//
-//        if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
-//            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//            return list;
-//        }
-//
-//        responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
-//        return list;
 
         return responseMessToEventList(response.getMessage());
     }

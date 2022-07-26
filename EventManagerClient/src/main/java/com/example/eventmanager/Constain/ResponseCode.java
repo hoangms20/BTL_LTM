@@ -25,18 +25,7 @@ public class ResponseCode {
     //create new event
     public static final String OK_REPLY_JOIN_EVENT_CODE = "70";
 
-    //get list invitation
-    public static final String OK_LISTINVITATION_CODE = "80";
-
-    //get list request
-    public static final String OK_LISTREQUEST_CODE = "90";
-
-    //get list user
-    public static final String OK_LISTUSER_CODE = "100";
-
-    //get list event
-    public static final String OK_LISTEVENT_CODE = "110";
-
+    //Log out
     public static final String OK_LOG_OUT_CODE = "120";
 
     //wrong request message

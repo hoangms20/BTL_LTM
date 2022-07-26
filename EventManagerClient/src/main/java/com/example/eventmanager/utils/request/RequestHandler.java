@@ -154,8 +154,10 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.GET_INVITATION_LIST, messList);
+        StringBuilder s =  new StringBuilder(rq.substring(0,rq.length()-3));
+        s.append(DELIMITER);
 
-        if (sendRequest(rq) == -1) {
+        if (sendRequest(s.toString()) == -1) {
             return -1;
         }
 

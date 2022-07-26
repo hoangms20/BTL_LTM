@@ -3,7 +3,7 @@ package com.example.eventmanager.view.acceptant;
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.AcceptantController;
 import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.RequestedEventDTO;
+import com.example.eventmanager.model.EventRequestDTO;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
 
     private EventDTO eventDTO;
 
-    private List<RequestedEventDTO> requestedEventDTOList;
+    private List<EventRequestDTO> eventRequestDTOList;
 
     public AcceptantScreenHandler(Stage stage, String screenPath, EventDTO eventDTO) throws IOException {
         super(stage, screenPath);
@@ -44,28 +44,28 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
         displayUserList(getRequestedEventDTOList());
     }
 
-    public List<RequestedEventDTO> getRequestedEventDTOList() {
-        return requestedEventDTOList;
+    public List<EventRequestDTO> getRequestedEventDTOList() {
+        return eventRequestDTOList;
     }
 
-    public void setRequestedEventDTOList(List<RequestedEventDTO> requestedEventDTOList) {
-        this.requestedEventDTOList = requestedEventDTOList;
+    public void setRequestedEventDTOList(List<EventRequestDTO> eventRequestDTOList) {
+        this.eventRequestDTOList = eventRequestDTOList;
     }
 
     public void reloadUserList() {
         AcceptantController controller = (AcceptantController) getBController();
         StringBuilder responseMess = new StringBuilder("");
-        List<RequestedEventDTO> requestedEventDTOList = controller.getListRequestedEvent(responseMess, eventDTO.getId());
+        List<EventRequestDTO> eventRequestDTOList = controller.getRequestedEventList(responseMess, eventDTO.getId());
 
-        setRequestedEventDTOList(requestedEventDTOList);
+        setRequestedEventDTOList(eventRequestDTOList);
     }
 
-    private void displayUserList(List<RequestedEventDTO> list) {
+    private void displayUserList(List<EventRequestDTO> list) {
         this.containerUser.getChildren().clear();
 
         if (list != null) {
             int i = 0;
-            for (RequestedEventDTO event :
+            for (EventRequestDTO event :
                     list) {
                 try {
                     AcceptantItem item = new AcceptantItem(ScreenPathConstain.ACCEPTANT_ITEM_SCREEN_PATH, new UserDTO(event.getSender()), this.eventDTO, getBController());

@@ -30,7 +30,7 @@
                   <Reflection />
                </effect>
             </ImageView>
-            <Label layoutX="201.0" layoutY="29.0" prefHeight="70.0" prefWidth="417.0" text="EVENT MANAGER" textFill="#3639e4" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="201.0" AnchorPane.topAnchor="29.0">
+            <Label layoutX="200.0" layoutY="29.0" prefHeight="70.0" prefWidth="417.0" text="EVENT MANAGER" textFill="#3639e4" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="201.0" AnchorPane.topAnchor="29.0">
                <font>
                   <Font name="Calibri Bold Italic" size="56.0" />
                </font>
@@ -68,6 +68,16 @@
                   <Font name="Calibri Bold Italic" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="username" layoutX="200.0" layoutY="100.0" prefHeight="18.0" prefWidth="150.0" text="User1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="acceptInvitationBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="816.0" layoutY="54.0" mnemonicParsing="false" onAction="#acceptInvitation" prefHeight="37.0" prefWidth="261.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="You were invited to join this event!" textAlignment="CENTER" textFill="#0742eb" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
          <BorderPane.margin>
             <Insets />

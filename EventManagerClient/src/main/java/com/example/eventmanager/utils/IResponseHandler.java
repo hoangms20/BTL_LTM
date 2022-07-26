@@ -1,7 +1,7 @@
 package com.example.eventmanager.utils;
 
 import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.RequestedEventDTO;
+import com.example.eventmanager.model.EventRequestDTO;
 import com.example.eventmanager.model.Response;
 import com.example.eventmanager.model.UserDTO;
 
@@ -21,9 +21,9 @@ public interface IResponseHandler {
 
     int handlerReplyJoinEventResponse(Response response, StringBuilder responseMess);
 
-    List<EventDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess);
+    List<EventRequestDTO> handlerGetInvitationListResponse(Response response, StringBuilder responseMess);
 
-    List<RequestedEventDTO> handlerGetRequestListResponse(Response response, StringBuilder responseMess);
+    List<EventRequestDTO> handlerGetRequestListResponse(Response response, StringBuilder responseMess);
 
     List<UserDTO> handlerGetUserListResponse(Response response, StringBuilder responseMess);
 

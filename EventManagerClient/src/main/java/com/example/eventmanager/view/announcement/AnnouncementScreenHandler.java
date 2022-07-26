@@ -2,8 +2,7 @@ package com.example.eventmanager.view.announcement;
 
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.AnnouncementController;
-import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.RequestedEventDTO;
+import com.example.eventmanager.model.EventRequestDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -20,9 +19,9 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
     @FXML // fx:id="container"
     private VBox container; // Value injected by FXMLLoader
 
-    private List<EventDTO> invitedEventList;
+    private List<EventRequestDTO> invitedEventList;
 
-    private List<RequestedEventDTO> requestedEventList;
+    private List<EventRequestDTO> requestedEventList;
 
     public AnnouncementScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
@@ -37,22 +36,22 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
         super.show();
     }
 
-    private String setAnnouncementForAInvitedEvent(EventDTO event) {
-        String s = event.getCreatedBy() + " has \"invited\" you to join a event: (" + event.getId() + ")" + event.getName();
+    private String setAnnouncementForAInvitedEvent(EventRequestDTO event) {
+        String s = event.getSender() + " has \"invited\" you to join a event: (" + event.getEventId() + ")" + event.getSender();
         return s;
     }
 
-    private String setAnnouncementForARequestedEvent(RequestedEventDTO event) {
-        String s = event.getSender() + " has \"requested\" to join a event of you: (" + event.getId() + ")" + event.getName();
+    private String setAnnouncementForARequestedEvent(EventRequestDTO event) {
+        String s = event.getSender() + " has \"requested\" to join a event of you: (" + event.getEventId() + ")" + event.getReceiver();
         return s;
     }
 
-    private void displayAnnouncementList(List<EventDTO> invitedEventDTOList, List<RequestedEventDTO> requestedEventList) {
+    private void displayAnnouncementList(List<EventRequestDTO> invitedEventDTOList, List<EventRequestDTO> requestedEventList) {
         this.container.getChildren().clear();
         int i = 0;
 
         if (invitedEventDTOList != null) {
-            for (EventDTO event :
+            for (EventRequestDTO event :
                     invitedEventDTOList) {
                 try {
                     AnnouncementItem item = new AnnouncementItem(ScreenPathConstain.ANNOUNCEMENT_ITEM_SCREEN_PATH, setAnnouncementForAInvitedEvent(event));
@@ -72,7 +71,7 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
         }
 
         if (requestedEventList != null) {
-            for (RequestedEventDTO event :
+            for (EventRequestDTO event :
                     requestedEventList) {
                 try {
                     AnnouncementItem item = new AnnouncementItem(ScreenPathConstain.ANNOUNCEMENT_ITEM_SCREEN_PATH, setAnnouncementForARequestedEvent(event));
@@ -107,19 +106,19 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
         setRequestedEventList(controller.getListRequestedEvent(responseMess));
     }
 
-    public List<EventDTO> getInvitedEventList() {
+    public List<EventRequestDTO> getInvitedEventList() {
         return invitedEventList;
     }
 
-    public void setInvitedEventList(List<EventDTO> invitedEventList) {
+    public void setInvitedEventList(List<EventRequestDTO> invitedEventList) {
         this.invitedEventList = invitedEventList;
     }
 
-    public List<RequestedEventDTO> getRequestedEventList() {
+    public List<EventRequestDTO> getRequestedEventList() {
         return requestedEventList;
     }
 
-    public void setRequestedEventList(List<RequestedEventDTO> requestedEventList) {
+    public void setRequestedEventList(List<EventRequestDTO> requestedEventList) {
         this.requestedEventList = requestedEventList;
     }
 }

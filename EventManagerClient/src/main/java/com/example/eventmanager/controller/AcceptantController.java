@@ -2,7 +2,7 @@ package com.example.eventmanager.controller;
 
 import com.example.eventmanager.Constain.ResponseMessage;
 import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.RequestedEventDTO;
+import com.example.eventmanager.model.EventRequestDTO;
 import com.example.eventmanager.model.Response;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.utils.IRequestHandler;
@@ -15,25 +15,25 @@ import java.util.List;
 
 public class AcceptantController extends BaseController {
 
-    private void filterEventById(List<RequestedEventDTO> requestedEventDTOS, String eventId) {
-        List<RequestedEventDTO> requestedEventDTOList = new ArrayList<>();
+    private void filterEventById(List<EventRequestDTO> eventRequestDTOS, String eventId) {
+        List<EventRequestDTO> eventRequestDTOList = new ArrayList<>();
 
-        for (RequestedEventDTO u :
-                requestedEventDTOS) {
-            if (u.getId().equals(eventId)) {
-                requestedEventDTOList.add(u);
+        for (EventRequestDTO u :
+                eventRequestDTOS) {
+            if (u.getEventId().equals(eventId)) {
+                eventRequestDTOList.add(u);
             }
         }
 
-        requestedEventDTOS = requestedEventDTOList;
+        eventRequestDTOS = eventRequestDTOList;
 
     }
 
-    public List<RequestedEventDTO> getListRequestedEvent(StringBuilder responseMess, String eventId) {
+    public List<EventRequestDTO> getRequestedEventList(StringBuilder responseMess, String eventId) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
-        List<RequestedEventDTO> requestedEventDTOList;
+        List<EventRequestDTO> eventRequestDTOList;
 
         //send login message
         ret = requestHandler.sendGetRequestListRequest(new UserDTO(getUserName()));
@@ -54,11 +54,11 @@ public class AcceptantController extends BaseController {
         Response response = responseHandler.getResponses();
 
         //handle login response
-        requestedEventDTOList = responseHandler.handlerGetRequestListResponse(response, responseMess);
+        eventRequestDTOList = responseHandler.handlerGetRequestListResponse(response, responseMess);
 
-        filterEventById(requestedEventDTOList, eventId);
+        filterEventById(eventRequestDTOList, eventId);
 
-        return requestedEventDTOList;
+        return eventRequestDTOList;
     }
 
     public int replyJoinRequest(UserDTO user, EventDTO eventDTO, String reply, StringBuilder responseMess) {

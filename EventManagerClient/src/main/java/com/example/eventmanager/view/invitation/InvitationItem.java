@@ -38,6 +38,7 @@ public class InvitationItem extends FXMLScreenHandler {
             getPrevScreen().announceError(responseMess.toString(), "Error");
         } else {
             getPrevScreen().announceInfo("Successfully!", "OK");
+            inviteButton.setDisable(true);
         }
 
 

@@ -80,4 +80,17 @@ public class HomeController extends BaseController{
         return 0;
     }
 
+    public int getNumOfAnnouncement () {
+        AnnouncementController controller = new AnnouncementController();
+
+        int num = 0;
+        StringBuilder s = new StringBuilder("");
+        num += controller.getListInvitedEvent(s).size();
+
+        s = new StringBuilder("");
+        num += controller.getListRequestedEvent(s).size();
+
+        return num;
+    }
+
 }

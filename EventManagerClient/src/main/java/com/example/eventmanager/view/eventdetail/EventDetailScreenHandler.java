@@ -51,6 +51,9 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     @FXML // fx:id="announcementLabel"
     private Label announcementLabel; // Value injected by FXMLLoader
 
+    @FXML // fx:id="acceptInvitationBtn"
+    private Button acceptInvitationBtn; // Value injected by FXMLLoader
+
     @FXML // fx:id="inviteButton"
     private Button inviteButton; // Value injected by FXMLLoader
 
@@ -83,6 +86,7 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     private EventDTO eventDTO;
     private List<UserDTO> userDTOList;
+    private boolean isInvited;
 
     @FXML
     void invite(ActionEvent event) throws IOException {
@@ -126,8 +130,13 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     @FXML
     void reloadJoinedUserList(MouseEvent event) {
-        reloadUserList();
+        updateJoinedUserList();
         displayUserList(getUserDTOList());
+    }
+
+    @FXML
+    void acceptInvitation(ActionEvent event) {
+
     }
 
     public EventDetailScreenHandler(Stage stage, String screenPath) throws IOException {
@@ -144,18 +153,20 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         EventDetailController controller = (EventDetailController) getBController();
         if (eventDTO.getCreatedBy().equals(controller.getUserName())){
             this.joinRequestButton.setDisable(true);
+            this.joinRequestButton.setVisible(false);
             this.inviteButton.setDisable(false);
             this.acceptButton.setDisable(false);
             this.announcementLabel.setVisible(true);
         }
         else {
             this.joinRequestButton.setDisable(false);
+            this.joinRequestButton.setVisible(true);
             this.inviteButton.setDisable(true);
             this.acceptButton.setDisable(true);
             this.announcementLabel.setVisible(false);
         }
 
-        reloadUserList();
+        updateJoinedUserList();
         displayUserList(getUserDTOList());
 
         super.show();
@@ -184,7 +195,7 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         changePasswordMenuItem.setDisable(true);
     }
 
-    public void reloadUserList() {
+    public void updateJoinedUserList() {
         EventDetailController controller = (EventDetailController) getBController();
         StringBuilder responseMess = new StringBuilder("");
         setUserDTOList(controller.getListUser(responseMess));
