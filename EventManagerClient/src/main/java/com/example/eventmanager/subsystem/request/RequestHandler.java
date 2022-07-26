@@ -1,6 +1,6 @@
 package com.example.eventmanager.subsystem.request;
 
-import com.example.eventmanager.Constain.RequestPrefix;
+import com.example.eventmanager.Constant.RequestPrefix;
 import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
@@ -9,8 +9,8 @@ import com.example.eventmanager.subsystem.IRequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.eventmanager.Constain.SocketConfig.SEPARATOR_LEVEL_1;
-import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
+import static com.example.eventmanager.Constant.SocketConfig.SEPARATOR_LEVEL_1;
+import static com.example.eventmanager.Constant.SocketConfig.DELIMITER;
 
 /**
  * This class is to send message

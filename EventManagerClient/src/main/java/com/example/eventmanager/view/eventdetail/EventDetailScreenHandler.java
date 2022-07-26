@@ -1,6 +1,6 @@
 package com.example.eventmanager.view.eventdetail;
 
-import com.example.eventmanager.Constain.ScreenPathConstain;
+import com.example.eventmanager.Constant.ScreenPathConstain;
 import com.example.eventmanager.controller.AcceptantController;
 import com.example.eventmanager.controller.EventDetailController;
 import com.example.eventmanager.controller.InvitationController;

@@ -1,11 +1,11 @@
 package com.example.eventmanager.subsystem;
 
-import com.example.eventmanager.Constain.SocketConfig;
+import com.example.eventmanager.Constant.SocketConfig;
 
 import java.io.*;
 import java.net.Socket;
 
-import static com.example.eventmanager.Constain.SocketConfig.BUFF_SIZE;
+import static com.example.eventmanager.Constant.SocketConfig.BUFF_SIZE;
 
 
 /**

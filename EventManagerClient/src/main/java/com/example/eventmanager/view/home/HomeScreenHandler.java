@@ -1,6 +1,6 @@
 package com.example.eventmanager.view.home;
 
-import com.example.eventmanager.Constain.ScreenPathConstain;
+import com.example.eventmanager.Constant.ScreenPathConstain;
 import com.example.eventmanager.controller.AnnouncementController;
 import com.example.eventmanager.controller.CreateEventController;
 import com.example.eventmanager.controller.HomeController;

@@ -1,7 +1,7 @@
 package com.example.eventmanager;
 
 import com.example.eventmanager.controller.LoginController;
-import com.example.eventmanager.Constain.ScreenPathConstain;
+import com.example.eventmanager.Constant.ScreenPathConstain;
 import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.view.login.LoginScreenHandler;
 import javafx.fxml.FXMLLoader;

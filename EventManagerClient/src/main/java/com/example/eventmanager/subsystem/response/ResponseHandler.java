@@ -1,7 +1,7 @@
 package com.example.eventmanager.subsystem.response;
 
-import com.example.eventmanager.Constain.ResponseCode;
-import com.example.eventmanager.Constain.ResponseMessage;
+import com.example.eventmanager.Constant.ResponseCode;
+import com.example.eventmanager.Constant.ResponseMessage;
 import com.example.eventmanager.model.*;
 import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.subsystem.IResponseHandler;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static com.example.eventmanager.Constain.SocketConfig.*;
+import static com.example.eventmanager.Constant.SocketConfig.*;
 
 /**
  * This class is to receive message and handler response
