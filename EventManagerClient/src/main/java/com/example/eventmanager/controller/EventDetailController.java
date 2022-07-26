@@ -1,6 +1,6 @@
 package com.example.eventmanager.controller;
 
-import com.example.eventmanager.Constant.ResponseMessage;
+import com.example.eventmanager.constant.ResponseMessage;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.Response;
 import com.example.eventmanager.model.UserDTO;

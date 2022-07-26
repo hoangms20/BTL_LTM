@@ -2,8 +2,8 @@ package com.example.eventmanager.controller;
 
 import com.example.eventmanager.view.login.LoginScreenHandler;
 
-import static com.example.eventmanager.Constant.SocketConfig.SEPARATOR_LEVEL_1;
-import static com.example.eventmanager.Constant.SocketConfig.SEPARATOR_LEVEL_2;
+import static com.example.eventmanager.constant.SocketConfig.SEPARATOR_LEVEL_1;
+import static com.example.eventmanager.constant.SocketConfig.SEPARATOR_LEVEL_2;
 
 
 /**

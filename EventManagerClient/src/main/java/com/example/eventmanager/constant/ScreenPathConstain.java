@@ -1,4 +1,4 @@
-package com.example.eventmanager.Constant;
+package com.example.eventmanager.constant;
 
 /**
  * This class is to Save path of fxml files constant

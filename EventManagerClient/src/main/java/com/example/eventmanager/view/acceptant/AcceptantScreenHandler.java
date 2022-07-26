@@ -1,6 +1,6 @@
 package com.example.eventmanager.view.acceptant;
 
-import com.example.eventmanager.Constant.ScreenPathConstain;
+import com.example.eventmanager.constant.ScreenPathConstain;
 import com.example.eventmanager.controller.AcceptantController;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.EventRequestDTO;

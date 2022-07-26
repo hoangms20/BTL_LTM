@@ -1,6 +1,6 @@
 package com.example.eventmanager.view.announcement;
 
-import com.example.eventmanager.Constant.ScreenPathConstain;
+import com.example.eventmanager.constant.ScreenPathConstain;
 import com.example.eventmanager.controller.AnnouncementController;
 import com.example.eventmanager.model.EventRequestDTO;
 import com.example.eventmanager.model.ReplyDTO;

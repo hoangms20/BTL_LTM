@@ -3,7 +3,7 @@ package com.example.eventmanager.view.login;
 import com.example.eventmanager.controller.HomeController;
 import com.example.eventmanager.controller.LoginController;
 import com.example.eventmanager.controller.SignUpController;
-import com.example.eventmanager.Constant.ScreenPathConstain;
+import com.example.eventmanager.constant.ScreenPathConstain;
 import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.home.HomeScreenHandler;
