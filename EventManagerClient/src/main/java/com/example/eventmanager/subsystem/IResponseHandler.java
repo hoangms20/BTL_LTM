@@ -1,9 +1,6 @@
-package com.example.eventmanager.utils;
+package com.example.eventmanager.subsystem;
 
-import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.EventRequestDTO;
-import com.example.eventmanager.model.Response;
-import com.example.eventmanager.model.UserDTO;
+import com.example.eventmanager.model.*;
 
 import java.util.List;
 
@@ -32,6 +29,10 @@ public interface IResponseHandler {
     EventDTO handlerCreateEventResponse(Response response, StringBuilder responseMess);
 
     List<UserDTO> handlerGetUserAttendListResponse(Response response, StringBuilder responseMess);
+
+    List<ReplyDTO> handlerGetRequestReplyListResponse(Response response, StringBuilder responseMess);
+
+    List<ReplyDTO> handlerGetInvitationReplyListResponse(Response response, StringBuilder responseMess);
 
     int handlerRequestResponse(Response response, StringBuilder responseMess);
 

@@ -1,8 +1,6 @@
-package com.example.eventmanager.model;
+package com.example.eventmanager.subsystem;
 
 import com.example.eventmanager.Constain.SocketConfig;
-import com.example.eventmanager.utils.IRequestHandler;
-import com.example.eventmanager.utils.request.RequestHandler;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -11,7 +9,6 @@ import java.io.IOException;
 import java.net.Socket;
 
 import static com.example.eventmanager.Constain.SocketConfig.BUFF_SIZE;
-import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
 
 
 public class Client {
@@ -55,43 +52,6 @@ public class Client {
         }
 
         return 0;
-    }
-
-    public void communicateToServer() {
-        if (clientSocket == null) {
-            System.out.println("You have not connected to server yet");
-            return;
-        }
-
-        // string to read message from input
-        String line = "";
-
-        // communicate to server
-        while (true) {
-
-            // send message
-            try {
-                line = in.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            IRequestHandler requestHandler = new RequestHandler();
-
-            requestHandler.sendLogOutRequest();
-
-//            ret = send(line, line.length());
-//            if (ret < 0) {
-//                System.out.println("Error send data!");
-//                return;
-//            }
-
-            // receive message from server
-            ret = recv();
-            if (ret < 0) {
-                System.out.println("Error receive data!");
-                return;
-            }
-        }// end while
     }
 
     public int send(String buffSend, int size) {
@@ -152,20 +112,6 @@ public class Client {
 
     public StringBuilder getCache() {
         return cache;
-    }
-
-    public static void main(String args[]) {
-        Client client1 = Client.getClient();
-
-        // connection to server
-        if (client1.connect() != 0) {
-            System.out.println("Can not connect to server!");
-            return;
-        }
-
-        // communicate to server
-        client1.communicateToServer();
-        client1.close();
     }
 
 }

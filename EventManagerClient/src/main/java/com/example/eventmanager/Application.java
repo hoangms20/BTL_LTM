@@ -2,16 +2,13 @@ package com.example.eventmanager;
 
 import com.example.eventmanager.controller.LoginController;
 import com.example.eventmanager.Constain.ScreenPathConstain;
-import com.example.eventmanager.model.Client;
+import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.view.login.LoginScreenHandler;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 

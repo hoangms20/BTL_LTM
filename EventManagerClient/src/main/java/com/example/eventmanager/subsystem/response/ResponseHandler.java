@@ -1,9 +1,10 @@
-package com.example.eventmanager.utils.response;
+package com.example.eventmanager.subsystem.response;
 
 import com.example.eventmanager.Constain.ResponseCode;
 import com.example.eventmanager.Constain.ResponseMessage;
 import com.example.eventmanager.model.*;
-import com.example.eventmanager.utils.IResponseHandler;
+import com.example.eventmanager.subsystem.Client;
+import com.example.eventmanager.subsystem.IResponseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,6 +137,22 @@ public class ResponseHandler implements IResponseHandler {
         return event;
     }
 
+    public ReplyDTO dataToAReply(String mess){
+        List<String> list = splitMessage(mess, SEPARATOR_LEVEL_1);
+        ReplyDTO replyDTO = new ReplyDTO();
+
+        for (int i = list.size(); i <= 3 ; i++){
+            list.add("");
+        }
+
+        replyDTO.setSender(list.get(0));
+        replyDTO.setReceiver(list.get(1));
+        replyDTO.setEventId(list.get(2));
+        replyDTO.setReply(list.get(3));
+
+        return replyDTO;
+    }
+
     public List<EventDTO> responseMessToEventList(String mess){
         List<EventDTO> eventEntityList = new ArrayList<>();
 
@@ -179,6 +196,21 @@ public class ResponseHandler implements IResponseHandler {
         }
 
         return eventRequestDTOS;
+    }
+
+    public List<ReplyDTO> responseMessToReplyList(String mess){
+        List<ReplyDTO> replyDTOS = new ArrayList<>();
+
+        if (mess == null || mess.equals(""))    return replyDTOS;
+
+        List<String> list = splitMessage(mess, SEPARATOR_LEVEL_2);
+
+        for (String s:
+                list) {
+            replyDTOS.add(dataToAReply(s));
+        }
+
+        return replyDTOS;
     }
 
     @Override
@@ -334,6 +366,18 @@ public class ResponseHandler implements IResponseHandler {
     public List<UserDTO> handlerGetUserAttendListResponse(Response response, StringBuilder responseMess) {
 
         return responseMessToUserList(response.getMessage());
+    }
+
+    @Override
+    public List<ReplyDTO> handlerGetRequestReplyListResponse(Response response, StringBuilder responseMess) {
+
+        return responseMessToReplyList(response.getMessage());
+    }
+
+    @Override
+    public List<ReplyDTO> handlerGetInvitationReplyListResponse(Response response, StringBuilder responseMess) {
+
+        return responseMessToReplyList(response.getMessage());
     }
 
     @Override

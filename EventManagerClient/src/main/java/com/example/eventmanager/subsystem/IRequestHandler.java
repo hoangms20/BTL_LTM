@@ -1,4 +1,4 @@
-package com.example.eventmanager.utils;
+package com.example.eventmanager.subsystem;
 
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
@@ -29,4 +29,8 @@ public interface IRequestHandler {
     int sendReplyInvitationRequest(EventDTO event, UserDTO userDTO, String reply);
 
     int sendGetAttendedUserListRequest(EventDTO eventDTO);
+
+    int sendGetRequestReplyListRequest(UserDTO userDTO);
+
+    int sendGetInvitationReplyListRequest(UserDTO userDTO);
 }

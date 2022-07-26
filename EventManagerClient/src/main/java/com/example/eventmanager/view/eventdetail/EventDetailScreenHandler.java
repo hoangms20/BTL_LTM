@@ -86,6 +86,9 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
     @FXML // fx:id="containerUser"
     private VBox containerUser; // Value injected by FXMLLoader
 
+    @FXML // fx:id="username"
+    private Label username; // Value injected by FXMLLoader
+
     private EventDTO eventDTO;
     private List<UserDTO> userDTOList;
     private boolean isInvited;
@@ -135,6 +138,9 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
             this.acceptButton.setDisable(true);
             this.announcementLabel.setVisible(false);
         }
+
+        //show username
+        this.username.setText(controller.getUserName());
 
         updateJoinedUserList();
         displayUserAttendList(getUserDTOList());

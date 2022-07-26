@@ -1,10 +1,10 @@
-package com.example.eventmanager.utils.request;
+package com.example.eventmanager.subsystem.request;
 
 import com.example.eventmanager.Constain.RequestPrefix;
-import com.example.eventmanager.model.Client;
+import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.UserDTO;
-import com.example.eventmanager.utils.IRequestHandler;
+import com.example.eventmanager.subsystem.IRequestHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -257,8 +257,31 @@ public class RequestHandler implements IRequestHandler {
         messList.add(eventDTO.getId());
 
         //set request message
-        //String rq = setRequestMessage(RequestPrefix.GET_ATTENDED_USER_LIST, messList);
         String rq = RequestPrefix.GET_ATTENDED_USER_LIST + eventDTO.getId() + DELIMITER;
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int sendGetRequestReplyListRequest(UserDTO userDTO) {
+        //set request message
+        String rq = RequestPrefix.GET_REQUEST_REPLY_LIST + userDTO.getUsername() + DELIMITER;
+
+        if (sendRequest(rq) == -1) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int sendGetInvitationReplyListRequest(UserDTO userDTO) {
+        //set request message
+        String rq = RequestPrefix.GET_INVITATION_REPLY_LIST + userDTO.getUsername() + DELIMITER;
 
         if (sendRequest(rq) == -1) {
             return -1;

@@ -4,8 +4,8 @@ import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.AnnouncementController;
 import com.example.eventmanager.controller.CreateEventController;
 import com.example.eventmanager.controller.HomeController;
+import com.example.eventmanager.subsystem.Client;
 import com.example.eventmanager.model.EventDTO;
-import com.example.eventmanager.model.UserDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.announcement.AnnouncementScreenHandler;
 import com.example.eventmanager.view.createevent.CreateEventScreenHandler;
@@ -202,6 +202,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML
     public void exit(ActionEvent event) {
+        Client.getClient().close();
         this.stage.close();
     }
 }

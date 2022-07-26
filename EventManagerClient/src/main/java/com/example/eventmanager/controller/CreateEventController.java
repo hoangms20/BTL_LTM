@@ -3,11 +3,10 @@ package com.example.eventmanager.controller;
 import com.example.eventmanager.Constain.ResponseMessage;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.model.Response;
-import com.example.eventmanager.model.UserDTO;
-import com.example.eventmanager.utils.IRequestHandler;
-import com.example.eventmanager.utils.IResponseHandler;
-import com.example.eventmanager.utils.request.RequestHandler;
-import com.example.eventmanager.utils.response.ResponseHandler;
+import com.example.eventmanager.subsystem.IRequestHandler;
+import com.example.eventmanager.subsystem.IResponseHandler;
+import com.example.eventmanager.subsystem.request.RequestHandler;
+import com.example.eventmanager.subsystem.response.ResponseHandler;
 
 public class CreateEventController extends BaseController{
     public int createNewEvent(EventDTO eventDTO, StringBuilder responseMess){

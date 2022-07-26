@@ -13,6 +13,8 @@ public class RequestPrefix {
     public static final String INVITATION_REPLY = "INVITEREPLY ";
     public static final String GET_INVITATION_LIST = "GETINVITE ";
     public static final String GET_REQUEST_LIST = "GETREQUEST ";
+    public static final String GET_INVITATION_REPLY_LIST = "GETINVITEREPLY ";
+    public static final String GET_REQUEST_REPLY_LIST = "GETREQUESTREPLY ";
     public static final String GET_ATTENDED_USER_LIST = "USERATTEND ";
 
 }

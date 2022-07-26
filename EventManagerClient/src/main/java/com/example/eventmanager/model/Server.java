@@ -1,15 +1,10 @@
 package com.example.eventmanager.model;
 
 import com.example.eventmanager.Constain.RequestPrefix;
-import com.example.eventmanager.Constain.SocketConfig;
-import com.example.eventmanager.utils.IResponseHandler;
-import com.example.eventmanager.utils.response.ResponseHandler;
+import com.example.eventmanager.subsystem.response.ResponseHandler;
 
 import java.net.*;
 import java.io.*;
-import java.util.Arrays;
-
-import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
 
 public class Server {
     //initialize socket and input stream
