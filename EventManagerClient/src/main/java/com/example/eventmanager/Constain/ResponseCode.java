@@ -18,16 +18,20 @@ public class ResponseCode {
     //invitation
     public static final String OK_INVITATION_CODE = "40";
     public static final String NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE = "41";
+    public static final String INVITED_INVITATION_CODE = "42";
 
     //reply invitation
     public static final String OK_REPLY_INVITATION_CODE = "50";
+    public static final String REPLIED_INVITATION_CODE = "51";
 
     //request
     public static final String OK_REQUEST_CODE = "60";
     public static final String NOT_EXIST_RECEIVER_OR_SENDER_REQUEST_CODE = "61";
+    public static final String REQUESTED_REQUEST_CODE = "62";
 
     //reply request
     public static final String OK_REPLY_REQUEST_CODE = "70";
+    public static final String REPLIED_REQUEST_CODE = "71";
 
     //Log out
     public static final String OK_LOG_OUT_CODE = "120";

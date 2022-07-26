@@ -73,7 +73,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="acceptInvitationBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="816.0" layoutY="54.0" mnemonicParsing="false" onAction="#acceptInvitation" prefHeight="37.0" prefWidth="261.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="You were invited to join this event!" textAlignment="CENTER" textFill="#0742eb" underline="true">
+            <Button fx:id="acceptInvitationBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="500.0" layoutY="90.0" mnemonicParsing="false" onAction="#acceptInvitation" prefHeight="37.0" prefWidth="261.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="You were invited to join this event!" textAlignment="CENTER" textFill="#0742eb" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>

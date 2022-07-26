@@ -75,4 +75,37 @@ public class EventDetailController extends BaseController{
 
         return userDTOList;
     }
+
+    public int replyInvitation(EventDTO event, UserDTO user, String reply, StringBuilder responseMess){
+        IRequestHandler requestHandler = new RequestHandler();
+        IResponseHandler responseHandler = new ResponseHandler();
+        int ret;
+
+        //send login message
+        ret = requestHandler.sendReplyInvitationRequest(event, user, reply);
+        //check send successfully?
+        if (ret != 0) {
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+
+        //receive message to cache of client
+        ret = responseHandler.receiveResponse();
+        //check receive successfully?
+        if (ret != 0) {
+            responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
+            return -1;
+        }
+        //get a message from cache and converse message to response
+        Response response = responseHandler.getResponses();
+
+        //handle login response
+        responseHandler.handlerReplyInvitationResponse(response, responseMess);
+
+        //check responseMess == OK?
+        if (!responseMess.toString().equals(ResponseMessage.OK_MESS))
+            return -1;
+
+        return 0;
+    }
 }

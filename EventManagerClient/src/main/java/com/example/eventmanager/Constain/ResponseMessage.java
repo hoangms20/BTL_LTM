@@ -16,6 +16,16 @@ public class ResponseMessage {
 
     //invitation
     public static final String NOT_EXIST_RECEIVER_OR_SENDER_MESS = "Not existed this receiver or sender!";
+    public static final String INVITED_INVITATION_MESS = "You invited this user!";
+
+    //reply invitation
+    public static final String REPLIED_INVITATION_MESS = "You replied this invitation!";
+
+    //request
+    public static final String REQUESTED_REQUEST_MESS = "You requested to join this event!";
+
+    //reply request
+    public static final String REPLIED_REQUEST_MESS = "You replied this request!";
 
     //something wrong
     public static final String SOMETHING_WRONG_MESS = "Somethings Wrong!";

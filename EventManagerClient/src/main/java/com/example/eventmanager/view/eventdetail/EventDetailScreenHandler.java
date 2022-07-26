@@ -32,6 +32,8 @@ import java.util.ResourceBundle;
 public class EventDetailScreenHandler extends BaseScreenHandler implements Initializable {
 
     public static final Font font = new Font("Calibri Light", 18);
+    public static final String OK_RELPY = "OK";
+    public static final String DENY_RELPY = "DENY";
 
     @FXML // fx:id="logo"
     private ImageView logo; // Value injected by FXMLLoader
@@ -224,6 +226,24 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     @FXML
     void acceptInvitation(ActionEvent event) {
+        EventDetailController controller = (EventDetailController) getBController();
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(controller.getUserName());
+        StringBuilder responseMess = new StringBuilder("");
+
+        if (announceConfirm("Do you agree to join this event?", "Comfirm")) {
+            if (controller.replyInvitation(eventDTO, userDTO, OK_RELPY, responseMess) != 0) {
+                announceError(responseMess.toString(), "Error");
+            } else {
+                announceInfo("Successfully!", "OK");
+            }
+        }else {
+            if (controller.replyInvitation(eventDTO, userDTO, DENY_RELPY, responseMess) != 0) {
+                announceError(responseMess.toString(), "Error");
+            } else {
+                announceInfo("Successfully!", "OK");
+            }
+        }
 
     }
 }

@@ -348,6 +348,16 @@ public class ResponseHandler implements IResponseHandler {
             return 0;
         }
 
+        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.REQUESTED_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.REQUESTED_REQUEST_MESS);
+            return -1;
+        }
+
         if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
             responseMess.append(ResponseMessage.SOMETHING_WRONG_MESS);
             return -1;
@@ -369,8 +379,8 @@ public class ResponseHandler implements IResponseHandler {
             return 0;
         }
 
-        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_REQUEST_CODE)){
-            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
+        if (response.getCode().equals(ResponseCode.REPLIED_REQUEST_CODE)){
+            responseMess.append(ResponseMessage.REPLIED_REQUEST_MESS);
             return -1;
         }
 
@@ -397,7 +407,12 @@ public class ResponseHandler implements IResponseHandler {
 
         if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE)){
             responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
-            return 0;
+            return -1;
+        }
+
+        if (response.getCode().equals(ResponseCode.INVITED_INVITATION_CODE)){
+            responseMess.append(ResponseMessage.INVITED_INVITATION_MESS);
+            return -1;
         }
 
         if (response.getCode().equals(ResponseCode.WRONG_REQUEST_CODE)){
@@ -421,8 +436,8 @@ public class ResponseHandler implements IResponseHandler {
             return 0;
         }
 
-        if (response.getCode().equals(ResponseCode.NOT_EXIST_RECEIVER_OR_SENDER_INVITATION_CODE)){
-            responseMess.append(ResponseMessage.NOT_EXIST_RECEIVER_OR_SENDER_MESS);
+        if (response.getCode().equals(ResponseCode.REPLIED_INVITATION_CODE)){
+            responseMess.append(ResponseMessage.REPLIED_INVITATION_MESS);
             return -1;
         }
 
