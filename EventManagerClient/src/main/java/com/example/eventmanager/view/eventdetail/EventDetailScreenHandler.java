@@ -29,6 +29,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * This class is Event Detail screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class EventDetailScreenHandler extends BaseScreenHandler implements Initializable {
 
     public static final Font font = new Font("Calibri Light", 18);

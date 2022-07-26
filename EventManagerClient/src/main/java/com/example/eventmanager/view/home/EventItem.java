@@ -2,7 +2,6 @@ package com.example.eventmanager.view.home;
 
 import com.example.eventmanager.Constain.ScreenPathConstain;
 import com.example.eventmanager.controller.EventDetailController;
-import com.example.eventmanager.controller.EventItemController;
 import com.example.eventmanager.model.EventDTO;
 import com.example.eventmanager.view.BaseScreenHandler;
 import com.example.eventmanager.view.FXMLScreenHandler;
@@ -16,6 +15,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class is item of home screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class EventItem extends FXMLScreenHandler {
 
     private EventDTO event;

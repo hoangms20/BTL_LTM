@@ -15,6 +15,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * This class is Create Event screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class CreateEventScreenHandler extends BaseScreenHandler {
 
     @FXML // fx:id="eventName"

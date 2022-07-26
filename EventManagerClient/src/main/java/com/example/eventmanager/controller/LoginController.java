@@ -8,6 +8,11 @@ import com.example.eventmanager.subsystem.IResponseHandler;
 import com.example.eventmanager.subsystem.request.RequestHandler;
 import com.example.eventmanager.subsystem.response.ResponseHandler;
 
+/**
+ * This class is controller of Log in Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class LoginController extends BaseController{
 
     public int login(UserDTO user, StringBuilder responseMess){

@@ -1,5 +1,10 @@
 package com.example.eventmanager.model;
 
+/**
+ * This class is to Reply info
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class ReplyDTO {
     private String sender;
     private String receiver;

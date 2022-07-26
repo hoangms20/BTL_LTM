@@ -8,6 +8,11 @@ import com.example.eventmanager.subsystem.IResponseHandler;
 import com.example.eventmanager.subsystem.request.RequestHandler;
 import com.example.eventmanager.subsystem.response.ResponseHandler;
 
+/**
+ * This class is controller of Create Event Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class CreateEventController extends BaseController{
     public int createNewEvent(EventDTO eventDTO, StringBuilder responseMess){
         IRequestHandler requestHandler = new RequestHandler();

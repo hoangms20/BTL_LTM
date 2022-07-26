@@ -1,5 +1,10 @@
 package com.example.eventmanager.model;
 
+/**
+ * This class is to user info
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class UserDTO {
     private String username;
     private String password;

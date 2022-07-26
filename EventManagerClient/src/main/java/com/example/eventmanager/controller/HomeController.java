@@ -11,8 +11,9 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
 import java.util.List;
 
 /**
- * This class controls the flow of events in homescreen
- * @author nguyenthehoang20183925
+ * This class is controller of Home Screen
+ *
+ * @author hoangnguyenthe20183925
  */
 public class HomeController extends BaseController{
 

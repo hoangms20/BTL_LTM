@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class is Announcement screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AnnouncementScreenHandler extends BaseScreenHandler {
 
     @FXML // fx:id="container"

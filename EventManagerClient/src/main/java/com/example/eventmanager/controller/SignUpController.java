@@ -8,9 +8,14 @@ import com.example.eventmanager.subsystem.IResponseHandler;
 import com.example.eventmanager.subsystem.request.RequestHandler;
 import com.example.eventmanager.subsystem.response.ResponseHandler;
 
-public class SignUpController extends BaseController{
+/**
+ * This class is controller of Sign up Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
+public class SignUpController extends BaseController {
 
-    public int signUp(UserDTO user, StringBuilder responseMess){
+    public int signUp(UserDTO user, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

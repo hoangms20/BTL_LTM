@@ -8,6 +8,11 @@ import javafx.scene.text.TextFlow;
 
 import java.io.IOException;
 
+/**
+ * This class is item of Announcement screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AnnouncementItem extends FXMLScreenHandler {
     public static final Font font = new Font("Calibri Light", 18);
 

@@ -11,12 +11,17 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
 
 import java.util.List;
 
-public class InvitationController extends BaseController{
+/**
+ * This class is controller of Invitation Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
+public class InvitationController extends BaseController {
 
     private void removeAUserByUsername(List<UserDTO> userDTOList, String username) {
-        for (UserDTO u:
+        for (UserDTO u :
                 userDTOList) {
-            if (u.getUsername().equals(username)){
+            if (u.getUsername().equals(username)) {
                 userDTOList.remove(u);
                 break;
             }
@@ -26,7 +31,7 @@ public class InvitationController extends BaseController{
     /**
      * this method ...
      */
-    public List<UserDTO> getListUser(StringBuilder responseMess){
+    public List<UserDTO> getListUser(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -55,7 +60,7 @@ public class InvitationController extends BaseController{
 
         //remove user logged in from list
         removeAUserByUsername(userDTOList, getUserName());
-        for (UserDTO u:
+        for (UserDTO u :
                 userDTOList) {
             System.out.println(u.getUsername());
         }
@@ -63,7 +68,7 @@ public class InvitationController extends BaseController{
         return userDTOList;
     }
 
-    public int invite(UserDTO user, EventDTO eventDTO, StringBuilder responseMess){
+    public int invite(UserDTO user, EventDTO eventDTO, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

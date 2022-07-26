@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class is Invitation screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class InvitationScreenHandler extends BaseScreenHandler {
 
     @FXML // fx:id="containerUser"

@@ -1,5 +1,10 @@
 package com.example.eventmanager.model;
 
+/**
+ * This class is to Response info
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class Response {
     private String code;
     private String message;

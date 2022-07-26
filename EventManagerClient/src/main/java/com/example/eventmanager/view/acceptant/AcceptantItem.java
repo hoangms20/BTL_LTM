@@ -14,6 +14,11 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
+/**
+ * This class is item of Acceptant screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AcceptantItem extends FXMLScreenHandler {
 
     public static final String OK_RELPY = "OK";

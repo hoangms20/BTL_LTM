@@ -1,5 +1,10 @@
 package com.example.eventmanager.Constain;
 
+/**
+ * This class is to Save prefix constant
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class RequestPrefix {
     public static final String CREATE_NEW_USER = "CREATEUSER ";
     public static final String LOG_IN = "USER ";

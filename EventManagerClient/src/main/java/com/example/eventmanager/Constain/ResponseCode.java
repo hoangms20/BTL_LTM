@@ -1,5 +1,10 @@
 package com.example.eventmanager.Constain;
 
+/**
+ * This class is to Save response code constant
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class ResponseCode {
     //sign up new user
     public static final String OK_SIGN_UP_CODE = "10";

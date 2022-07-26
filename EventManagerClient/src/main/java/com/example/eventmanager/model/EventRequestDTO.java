@@ -1,5 +1,10 @@
 package com.example.eventmanager.model;
 
+/**
+ * This class is to Event Request info: Join or invite
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class EventRequestDTO {
     private String sender;
 

@@ -1,5 +1,10 @@
 package com.example.eventmanager.Constain;
 
+/**
+ * This class is to Save path of fxml files constant
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class ScreenPathConstain {
     //FXML PATH
     public static final String ERROR_CONNECT_SERVER_SCREEN_PATH = "errorconnectserver.fxml";

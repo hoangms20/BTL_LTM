@@ -17,7 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controls the login screen
+ * This class is Sign up screen
+ *
+ * @author hoangnguyenthe20183925
  */
 public class SignUpScreenHandler extends BaseScreenHandler implements Initializable {
     @FXML // fx:id="logo"

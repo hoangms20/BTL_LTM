@@ -7,6 +7,11 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
+/**
+ * This class is Event Detail screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class UserItem extends FXMLScreenHandler {
     @FXML // fx:id="username"
     private Label username; // Value injected by FXMLLoader

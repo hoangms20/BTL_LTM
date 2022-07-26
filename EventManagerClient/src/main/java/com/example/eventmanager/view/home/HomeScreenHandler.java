@@ -27,6 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * This class is Home screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
 
     @FXML // fx:id="scrollPane"

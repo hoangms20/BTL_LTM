@@ -13,6 +13,11 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is controller of Acceptant Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AcceptantController extends BaseController {
 
     private void filterEventById(List<EventRequestDTO> eventRequestDTOS, String eventId) {

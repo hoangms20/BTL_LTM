@@ -1,5 +1,10 @@
 package com.example.eventmanager.Constain;
 
+/**
+ * This class is to Save response message constant
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class ResponseMessage {
     //ok
     public static final String OK_MESS = "OK";

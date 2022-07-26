@@ -12,6 +12,11 @@ import java.util.regex.Pattern;
 
 import static com.example.eventmanager.Constain.SocketConfig.*;
 
+/**
+ * This class is to receive message and handler response
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class ResponseHandler implements IResponseHandler {
     private Client client = Client.getClient();
 

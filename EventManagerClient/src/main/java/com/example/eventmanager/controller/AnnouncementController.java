@@ -12,6 +12,11 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
 
 import java.util.List;
 
+/**
+ * This class is controller of Announcement Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AnnouncementController extends BaseController{
 
     public List<EventRequestDTO> getListInvitedEvent(StringBuilder responseMess){

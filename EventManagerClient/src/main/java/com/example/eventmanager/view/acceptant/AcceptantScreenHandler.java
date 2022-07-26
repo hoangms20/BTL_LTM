@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class is Acceptant screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class AcceptantScreenHandler extends BaseScreenHandler {
     @FXML // fx:id="containerUser"
     private VBox containerUser; // Value injected by FXMLLoader

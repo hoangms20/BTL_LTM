@@ -14,6 +14,11 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
+/**
+ * This class is item of Invitation screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class InvitationItem extends FXMLScreenHandler {
 
     @FXML // fx:id="frame"

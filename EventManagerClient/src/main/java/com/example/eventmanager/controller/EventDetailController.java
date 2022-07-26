@@ -11,6 +11,11 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
 
 import java.util.List;
 
+/**
+ * This class is controller of Event Detail Screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class EventDetailController extends BaseController{
 
     public int requestToJoin(EventDTO event, UserDTO user, StringBuilder responseMess){

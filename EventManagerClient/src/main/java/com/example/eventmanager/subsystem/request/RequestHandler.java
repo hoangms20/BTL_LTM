@@ -12,6 +12,11 @@ import java.util.List;
 import static com.example.eventmanager.Constain.SocketConfig.SEPARATOR_LEVEL_1;
 import static com.example.eventmanager.Constain.SocketConfig.DELIMITER;
 
+/**
+ * This class is to send message
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class RequestHandler implements IRequestHandler {
     private Client client = Client.getClient();
 

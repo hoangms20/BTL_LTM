@@ -19,7 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/** Controls the login screen */
+/**
+ * This class is Log in screen
+ *
+ * @author hoangnguyenthe20183925
+ */
 public class LoginScreenHandler extends BaseScreenHandler implements Initializable {
     private static String userNameLoggedIn;
 
