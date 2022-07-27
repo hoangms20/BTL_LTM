@@ -124,6 +124,10 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         changePasswordMenuItem.setDisable(true);
     }
 
+    /**
+     * This function is to show screen
+     *
+     */
     @Override
     public void show() {
         EventDetailController controller = (EventDetailController) getBController();
@@ -153,6 +157,10 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         super.show();
     }
 
+    /**
+     * This function is to show data
+     *
+     */
     public void setEventDTO(EventDTO eventDTO) {
         this.eventDTO = eventDTO;
 
@@ -167,12 +175,20 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         description.getChildren().add(text);
     }
 
+    /**
+     * This function is to update user attend list
+     *
+     */
     public void updateJoinedUserList() {
         EventDetailController controller = (EventDetailController) getBController();
         StringBuilder responseMess = new StringBuilder("");
         setUserDTOList(controller.getListUserAttend(eventDTO, responseMess));
     }
 
+    /**
+     * This function is to show all user attend
+     *
+     */
     private void displayUserAttendList(List<UserDTO> list) {
         this.containerUser.getChildren().clear();
 
@@ -189,6 +205,10 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
         }
     }
 
+    /**
+     * This function is to show invitation screen
+     *
+     */
     @FXML
     void invite(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -200,6 +220,10 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     }
 
+    /**
+     * This function is to show acceptant screen
+     *
+     */
     @FXML
     void acceptRequest(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -211,6 +235,10 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     }
 
+    /**
+     * This function is to send request to join event
+     *
+     */
     @FXML
     void sendRequestToJoin(ActionEvent event) {
         if (announceConfirm("Are you sure?", "Comfirm")) {
@@ -229,12 +257,20 @@ public class EventDetailScreenHandler extends BaseScreenHandler implements Initi
 
     }
 
+    /**
+     * This function is to reload data
+     *
+     */
     @FXML
     void reloadJoinedUserList(MouseEvent event) {
         updateJoinedUserList();
         displayUserAttendList(getUserDTOList());
     }
 
+    /**
+     * This function is to accept invitation
+     *
+     */
     @FXML
     void acceptInvitation(ActionEvent event) {
         EventDetailController controller = (EventDetailController) getBController();

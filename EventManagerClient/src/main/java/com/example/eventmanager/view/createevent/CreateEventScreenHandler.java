@@ -40,11 +40,19 @@ public class CreateEventScreenHandler extends BaseScreenHandler {
     @FXML // fx:id="cancelButton"
     private Button cancelButton; // Value injected by FXMLLoader
 
+    /**
+     * This function is to cancel and return home
+     *
+     */
     @FXML
     void cancel(ActionEvent event) {
         this.stage.close();
     }
 
+    /**
+     * This function is to submit create event
+     *
+     */
     @FXML
     void submit(ActionEvent event) {
         if (!invalidFields())
@@ -75,6 +83,10 @@ public class CreateEventScreenHandler extends BaseScreenHandler {
         super(stage, screenPath);
     }
 
+    /**
+     * This function is to valid fields
+     *
+     */
     private boolean invalidFields() {
         if (eventName.getText() == null || eventName.getText().trim().equals("")) {
             announceWarning("Please Enter Event Name!", "Warning");
@@ -129,6 +141,10 @@ public class CreateEventScreenHandler extends BaseScreenHandler {
         return true;
     }
 
+    /**
+     * This function is to clear all fields
+     *
+     */
     private void clearFields() {
         eventName.clear();
         place.clear();

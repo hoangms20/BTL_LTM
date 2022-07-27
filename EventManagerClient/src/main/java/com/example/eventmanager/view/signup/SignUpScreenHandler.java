@@ -53,6 +53,10 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
     }
 
 
+    /**
+     * This function is to submit sign up
+     *
+     */
     @FXML
     public void submit(ActionEvent event) {
         if (!invalidFields())
@@ -74,11 +78,19 @@ public class SignUpScreenHandler extends BaseScreenHandler implements Initializa
         }
     }
 
+    /**
+     * This function is to cancel and return login screen
+     *
+     */
     @FXML
     public void cancel(ActionEvent event) {
         getPreviousScreen().show();
     }
 
+    /**
+     * This function is to valid fields
+     *
+     */
     private boolean invalidFields() {
         if (username.getText() == null || username.getText().trim().equals("")) {
             announceWarning("Please Enter User Name!", "Warning");

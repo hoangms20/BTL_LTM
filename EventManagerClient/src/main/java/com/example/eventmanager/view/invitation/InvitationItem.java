@@ -38,6 +38,10 @@ public class InvitationItem extends FXMLScreenHandler {
 
     private EventDTO eventDTO;
 
+    /**
+     * This function is to invite a user to join event
+     *
+     */
     @FXML
     void invite(ActionEvent event) {
         InvitationController invitationController = (InvitationController) this.controller;

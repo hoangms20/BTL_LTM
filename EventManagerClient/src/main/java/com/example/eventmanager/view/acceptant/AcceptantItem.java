@@ -44,6 +44,10 @@ public class AcceptantItem extends FXMLScreenHandler {
 
     private BaseController controller;
 
+    /**
+     * This function is to accept request
+     *
+     */
     @FXML
     void accept(ActionEvent event) {
         AcceptantController acceptantController = (AcceptantController) this.controller;
@@ -60,6 +64,10 @@ public class AcceptantItem extends FXMLScreenHandler {
 
     }
 
+    /**
+     * This function is to reject request
+     *
+     */
     @FXML
     void reject(ActionEvent event) {
         AcceptantController acceptantController = (AcceptantController) this.controller;

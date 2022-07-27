@@ -13,8 +13,16 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
  *
  * @author hoangnguyenthe20183925
  */
-public class CreateEventController extends BaseController{
-    public int createNewEvent(EventDTO eventDTO, StringBuilder responseMess){
+public class CreateEventController extends BaseController {
+
+    /**
+     * This function is to create event
+     *
+     * @param eventDTO:     event info
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
+    public int createNewEvent(EventDTO eventDTO, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

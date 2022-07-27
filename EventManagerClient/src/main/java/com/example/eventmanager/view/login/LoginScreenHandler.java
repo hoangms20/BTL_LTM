@@ -57,6 +57,10 @@ public class LoginScreenHandler extends BaseScreenHandler implements Initializab
 
     }
 
+    /**
+     * This function is to log in
+     *
+     */
     @FXML
     public void userLogin(ActionEvent event){
         if (!invalidFields())
@@ -86,6 +90,10 @@ public class LoginScreenHandler extends BaseScreenHandler implements Initializab
         }
     }
 
+    /**
+     * This function is to valid fields
+     *
+     */
     private boolean invalidFields() {
         if (username.getText() == null || username.getText().trim().equals("")){
             announceWarning("Please Enter Your User Name!", "Warning");
@@ -107,6 +115,10 @@ public class LoginScreenHandler extends BaseScreenHandler implements Initializab
         return true;
     }
 
+    /**
+     * This function is to show sign up screen
+     *
+     */
     @FXML
     public void signUp(ActionEvent event) throws IOException {
         SignUpController signUpController = new SignUpController();

@@ -15,6 +15,13 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
  */
 public class LoginController extends BaseController{
 
+    /**
+     * This function is to log in
+     *
+     * @param user:         user info
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
     public int login(UserDTO user, StringBuilder responseMess){
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();

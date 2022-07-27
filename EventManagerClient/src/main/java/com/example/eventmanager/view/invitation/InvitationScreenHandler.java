@@ -53,12 +53,20 @@ public class InvitationScreenHandler extends BaseScreenHandler {
         this.userDTOList = userDTOList;
     }
 
+    /**
+     * This function is to reload event list
+     *
+     */
     public void reloadUserList() {
         InvitationController controller = (InvitationController) getBController();
         StringBuilder responseMess = new StringBuilder("");
         setUserDTOList(controller.getListUser(responseMess));
     }
 
+    /**
+     * This function is to show user list
+     *
+     */
     private void displayUserList(List<UserDTO> list) {
         this.containerUser.getChildren().clear();
 

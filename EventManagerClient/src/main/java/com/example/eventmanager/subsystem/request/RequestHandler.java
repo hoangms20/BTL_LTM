@@ -18,8 +18,16 @@ import static com.example.eventmanager.constant.SocketConfig.DELIMITER;
  * @author hoangnguyenthe20183925
  */
 public class RequestHandler implements IRequestHandler {
+    //client info
     private Client client = Client.getClient();
 
+    /**
+     * This function is to set up message to send
+     *
+     * @param prefix:   prefix
+     * @param messList: data to send
+     * @return message
+     */
     private String setRequestMessage(String prefix, List<String> messList) {
         StringBuilder rq = new StringBuilder("");
         rq.append(prefix);//set prefix
@@ -37,7 +45,13 @@ public class RequestHandler implements IRequestHandler {
         return rq.toString();
     }
 
-    private int sendRequest(String requestMess){
+    /**
+     * This function is to send request
+     *
+     * @param requestMess: message
+     * @return 0 if success
+     */
+    private int sendRequest(String requestMess) {
         if (client.send(requestMess, requestMess.length()) == -1) {
             return -1;
         }
@@ -45,6 +59,13 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send login request
+     *
+     * @param username: username
+     * @param password: password
+     * @return 0 if success
+     */
     @Override
     public int sendLoginRequest(String username, String password) {
         //add every message info to a list
@@ -62,6 +83,13 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send sign up request
+     *
+     * @param username: username
+     * @param password: password
+     * @return 0 if success
+     */
     @Override
     public int sendSignUpRequest(String username, String password) {
         //add every message info to a list
@@ -79,6 +107,11 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send log out request
+     *
+     * @return 0 if success
+     */
     @Override
     public int sendLogOutRequest() {
         //add every message info to a list
@@ -94,6 +127,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send create event request
+     *
+     * @param event: event info
+     * @return 0 if success
+     */
     @Override
     public int sendCreateEventRequest(EventDTO event) {
         //add every message info to a list
@@ -114,6 +153,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get list invitation request
+     *
+     * @param userDTO: user info
+     * @return 0 if success
+     */
     @Override
     public int sendGetInvitationListRequest(UserDTO userDTO) {
         //add every message info to a list
@@ -122,7 +167,7 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.GET_INVITATION_LIST, messList);
-        StringBuilder s =  new StringBuilder(rq.substring(0,rq.length()-3));
+        StringBuilder s = new StringBuilder(rq.substring(0, rq.length() - 3));
         s.append(DELIMITER);
 
         if (sendRequest(s.toString()) == -1) {
@@ -132,6 +177,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get list request to join event request
+     *
+     * @param userDTO: user info
+     * @return 0 if success
+     */
     @Override
     public int sendGetRequestListRequest(UserDTO userDTO) {
         //add every message info to a list
@@ -140,7 +191,7 @@ public class RequestHandler implements IRequestHandler {
 
         //set request message
         String rq = setRequestMessage(RequestPrefix.GET_REQUEST_LIST, messList);
-        StringBuilder s =  new StringBuilder(rq.substring(0,rq.length()-3));
+        StringBuilder s = new StringBuilder(rq.substring(0, rq.length() - 3));
         s.append(DELIMITER);
 
         if (sendRequest(s.toString()) == -1) {
@@ -150,6 +201,11 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get all user request
+     *
+     * @return 0 if success
+     */
     @Override
     public int sendGetUserListRequest() {
         //add every message info to a list
@@ -165,6 +221,11 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get all event request
+     *
+     * @return 0 if success
+     */
     @Override
     public int sendGetEventListRequest() {
         //add every message info to a list
@@ -181,6 +242,13 @@ public class RequestHandler implements IRequestHandler {
     }
 
 
+    /**
+     * This function is to send join event request
+     *
+     * @param userDTO: user info
+     * @param event:   event info
+     * @return 0 if success
+     */
     @Override
     public int sendJoinEventRequest(EventDTO event, UserDTO userDTO) {
         //add every message info to a list
@@ -199,6 +267,14 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send reply join request
+     *
+     * @param userDTO: user info\
+     * @param event:   event info
+     * @param reply:   reply of user OK|DENY
+     * @return 0 if success
+     */
     @Override
     public int sendReplyJoinEventRequest(EventDTO event, UserDTO userDTO, String reply) {
         //add every message info to a list
@@ -218,6 +294,13 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send invite a user to join event request
+     *
+     * @param userDTO:  user info
+     * @param eventDTO: event info
+     * @return 0 if success
+     */
     @Override
     public int sendInvitationRequest(UserDTO userDTO, EventDTO eventDTO) {
         //add every message info to a list
@@ -236,6 +319,14 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send reply invitation request
+     *
+     * @param userDTO: user info\
+     * @param event:   event info
+     * @param reply:   reply of user OK|DENY
+     * @return 0 if success
+     */
     @Override
     public int sendReplyInvitationRequest(EventDTO event, UserDTO userDTO, String reply) {
         //add every message info to a list
@@ -255,6 +346,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get user attended request
+     *
+     * @param eventDTO: event info
+     * @return 0 if success
+     */
     @Override
     public int sendGetAttendedUserListRequest(EventDTO eventDTO) {
         //add every message info to a list
@@ -271,6 +368,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get list request reply of a user request
+     *
+     * @param userDTO: user info
+     * @return 0 if success
+     */
     @Override
     public int sendGetRequestReplyListRequest(UserDTO userDTO) {
         //set request message
@@ -283,6 +386,12 @@ public class RequestHandler implements IRequestHandler {
         return 0;
     }
 
+    /**
+     * This function is to send get list invitation reply of a user request
+     *
+     * @param userDTO: user info
+     * @return 0 if success
+     */
     @Override
     public int sendGetInvitationReplyListRequest(UserDTO userDTO) {
         //set request message

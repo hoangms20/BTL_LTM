@@ -58,6 +58,10 @@ public class EventItem extends FXMLScreenHandler {
         setEvent(eventEntity);
     }
 
+    /**
+     * This function is to set data
+     *
+     */
     public void setEvent(EventDTO event) {
         this.eventDTO = event;
         eventId.setText(event.getId());
@@ -79,6 +83,10 @@ public class EventItem extends FXMLScreenHandler {
         return parentVBox;
     }
 
+    /**
+     * This function is to show event detail screen
+     *
+     */
     @FXML
     void watchDetail(ActionEvent event) throws IOException {
         EventDetailController eventDetailController = new EventDetailController();

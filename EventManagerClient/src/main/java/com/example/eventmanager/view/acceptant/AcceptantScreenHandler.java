@@ -32,6 +32,10 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
         this.eventDTO = eventDTO;
     }
 
+    /**
+     * This function is to show screen
+     *
+     */
     @Override
     public void show() {
         reloadUserList();
@@ -39,6 +43,11 @@ public class AcceptantScreenHandler extends BaseScreenHandler {
         super.show();
     }
 
+
+    /**
+     * This function is to reload data
+     *
+     */
     @FXML
     void reload(MouseEvent event) {
         updateUserList();

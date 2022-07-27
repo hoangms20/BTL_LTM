@@ -15,9 +15,15 @@ import java.util.List;
  *
  * @author hoangnguyenthe20183925
  */
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
-    public List<EventDTO> getListEvent(StringBuilder responseMess){
+    /**
+     * This function is to get all event
+     *
+     * @param responseMess: message after handler response
+     * @return EventDTO list
+     */
+    public List<EventDTO> getListEvent(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -47,7 +53,13 @@ public class HomeController extends BaseController{
         return eventDTOList;
     }
 
-    public int logout(StringBuilder responseMess){
+    /**
+     * This function is to log out
+     *
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
+    public int logout(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

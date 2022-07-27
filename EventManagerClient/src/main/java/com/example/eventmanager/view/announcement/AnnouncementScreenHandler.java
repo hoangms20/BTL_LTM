@@ -190,12 +190,20 @@ public class AnnouncementScreenHandler extends BaseScreenHandler {
         }
     }
 
+    /**
+     * This function is to reload data
+     *
+     */
     @FXML
     void reloadAnnouncement(MouseEvent event) {
         updateAnnouncementList();
         displayAnnouncementList(getInvitedEventList(), getRequestedEventList(), getRequestReplyList(), getInvitationReplyList());
     }
 
+    /**
+     * This function is to update announcement list
+     *
+     */
     private void updateAnnouncementList() {
         AnnouncementController controller = (AnnouncementController) getBController();
         StringBuilder responseMess = new StringBuilder("");

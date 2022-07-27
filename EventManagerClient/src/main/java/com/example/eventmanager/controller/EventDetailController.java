@@ -16,9 +16,17 @@ import java.util.List;
  *
  * @author hoangnguyenthe20183925
  */
-public class EventDetailController extends BaseController{
+public class EventDetailController extends BaseController {
 
-    public int requestToJoin(EventDTO event, UserDTO user, StringBuilder responseMess){
+    /**
+     * This function is to request to join event
+     *
+     * @param event:        event info
+     * @param user:         requester
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
+    public int requestToJoin(EventDTO event, UserDTO user, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -51,7 +59,14 @@ public class EventDetailController extends BaseController{
         return 0;
     }
 
-    public List<UserDTO> getListUserAttend(EventDTO eventDTO, StringBuilder responseMess){
+    /**
+     * This function is to get list user attend
+     *
+     * @param eventDTO:     event info
+     * @param responseMess: message after handler response
+     * @return UserDTO list
+     */
+    public List<UserDTO> getListUserAttend(EventDTO eventDTO, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -81,7 +96,15 @@ public class EventDetailController extends BaseController{
         return userDTOList;
     }
 
-    public int replyInvitation(EventDTO event, UserDTO user, String reply, StringBuilder responseMess){
+    /**
+     * This function is to reply invitation
+     *
+     * @param event:        event info
+     * @param user:         replier
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
+    public int replyInvitation(EventDTO event, UserDTO user, String reply, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

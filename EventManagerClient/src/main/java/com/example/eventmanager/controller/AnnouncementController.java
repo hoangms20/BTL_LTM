@@ -17,9 +17,15 @@ import java.util.List;
  *
  * @author hoangnguyenthe20183925
  */
-public class AnnouncementController extends BaseController{
+public class AnnouncementController extends BaseController {
 
-    public List<EventRequestDTO> getListInvitedEvent(StringBuilder responseMess){
+    /**
+     * This function is to get list event this user is invited
+     *
+     * @param responseMess: message after handler response
+     * @return EventRequestDTO list
+     */
+    public List<EventRequestDTO> getListInvitedEvent(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -49,7 +55,13 @@ public class AnnouncementController extends BaseController{
         return eventRequestDTOList;
     }
 
-    public List<EventRequestDTO> getListRequestedEvent(StringBuilder responseMess){
+    /**
+     * This function is to get list event this user is requested
+     *
+     * @param responseMess: message after handler response
+     * @return EventRequestDTO list
+     */
+    public List<EventRequestDTO> getListRequestedEvent(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -79,7 +91,13 @@ public class AnnouncementController extends BaseController{
         return eventRequestDTOList;
     }
 
-    public List<ReplyDTO> getListRequestReply(StringBuilder responseMess){
+    /**
+     * This function is to get list request reply of this user
+     *
+     * @param responseMess: message after handler response
+     * @return ReplyDTO list
+     */
+    public List<ReplyDTO> getListRequestReply(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;
@@ -109,7 +127,13 @@ public class AnnouncementController extends BaseController{
         return replyDTOList;
     }
 
-    public List<ReplyDTO> getListInvitationReply(StringBuilder responseMess){
+    /**
+     * This function is to get list invitation reply of this user
+     *
+     * @param responseMess: message after handler response
+     * @return ReplyDTO list
+     */
+    public List<ReplyDTO> getListInvitationReply(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();
         int ret;

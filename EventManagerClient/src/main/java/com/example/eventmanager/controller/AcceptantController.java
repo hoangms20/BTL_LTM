@@ -20,6 +20,13 @@ import java.util.List;
  */
 public class AcceptantController extends BaseController {
 
+    /**
+     * This function is to check s include Not Allowed Character?
+     *
+     * @param eventRequestDTOS: list EventRequestDTO
+     * @param eventId: Id of event
+     *
+     */
     private void filterEventById(List<EventRequestDTO> eventRequestDTOS, String eventId) {
         List<EventRequestDTO> eventRequestDTOList = new ArrayList<>();
 
@@ -34,6 +41,14 @@ public class AcceptantController extends BaseController {
 
     }
 
+    /**
+     * This function is to check s include Not Allowed Character?
+     *
+     * @param responseMess: message after handler response
+     * @param eventId: Id of event
+     *
+     * @return EventRequestDTO list
+     */
     public List<EventRequestDTO> getRequestedEventList(StringBuilder responseMess, String eventId) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();

@@ -15,6 +15,13 @@ import com.example.eventmanager.subsystem.response.ResponseHandler;
  */
 public class SignUpController extends BaseController {
 
+    /**
+     * This function is to sign up a new user
+     *
+     * @param user:         user info
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
     public int signUp(UserDTO user, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();

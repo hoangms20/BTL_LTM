@@ -18,6 +18,13 @@ import java.util.List;
  */
 public class InvitationController extends BaseController {
 
+    /**
+     * This function is remove logged in user from
+     *
+     * @param username:    username of user was logged in
+     * @param userDTOList: list user
+     * @return username userDTOList
+     */
     private void removeAUserByUsername(List<UserDTO> userDTOList, String username) {
         for (UserDTO u :
                 userDTOList) {
@@ -29,7 +36,10 @@ public class InvitationController extends BaseController {
     }
 
     /**
-     * this method ...
+     * This function is to get all user
+     *
+     * @param responseMess: message after handler response
+     * @return UserDTO list
      */
     public List<UserDTO> getListUser(StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
@@ -68,6 +78,15 @@ public class InvitationController extends BaseController {
         return userDTOList;
     }
 
+
+    /**
+     * This function is to invite a user to join event
+     *
+     * @param eventDTO:        event info
+     * @param user:         inviter
+     * @param responseMess: message after handler response
+     * @return 0 if success
+     */
     public int invite(UserDTO user, EventDTO eventDTO, StringBuilder responseMess) {
         IRequestHandler requestHandler = new RequestHandler();
         IResponseHandler responseHandler = new ResponseHandler();

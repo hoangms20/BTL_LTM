@@ -81,6 +81,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     }
 
+    /**
+     * This function is to show screen
+     *
+     */
     @Override
     public void show() {
         HomeController controller = (HomeController) getBController();
@@ -100,16 +104,28 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         this.eventList = eventList;
     }
 
+    /**
+     * This function is to update event list
+     *
+     */
     private void updateEventList() {
         HomeController controller = (HomeController) getBController();
         StringBuilder responseMess = new StringBuilder("");
         setEventList(controller.getListEvent(responseMess));
     }
 
+    /**
+     * This function is to show all event
+     *
+     */
     private void displayAllEvent(){
         displayEventList(getEventList());
     }
 
+    /**
+     * This function is to show events of user
+     *
+     */
     private void displayMyEvent(){
         List<EventDTO> eventDTOList = new ArrayList<>();
         List<EventDTO> list = getEventList();
@@ -127,6 +143,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         displayEventList(eventDTOList);
     }
 
+    /**
+     * This function is to show event list
+     *
+     */
     private void displayEventList(List<EventDTO> list) {
         this.eventContainer.getChildren().clear();
 
@@ -153,6 +173,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         }
     }
 
+    /**
+     * This function is to show announcement screen
+     *
+     */
     @FXML
     public void seeAnnounce(MouseEvent event) throws IOException {
         AnnouncementController controller = new AnnouncementController();
@@ -165,6 +189,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         announcementScreenHandler.show();
     }
 
+    /**
+     * This function is to show create event screen
+     *
+     */
     @FXML
     public void createEvent(ActionEvent event) throws IOException {
         CreateEventController createEventController = new CreateEventController();
@@ -177,22 +205,38 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     }
 
+    /**
+     * This function is to reload event list and show
+     *
+     */
     @FXML
     void refreshEventList(ActionEvent event) {
         updateEventList();
         displayAllEvent();
     }
 
+    /**
+     * This function is to show your event
+     *
+     */
     @FXML
     public void seeYourEvent(ActionEvent event) {
         displayMyEvent();
     }
 
+    /**
+     * This function is to show all event
+     *
+     */
     @FXML
     public void seeAllEvent(ActionEvent event) {
         displayAllEvent();
     }
 
+    /**
+     * This function is to log out and return login screen
+     *
+     */
     @FXML
     public void logOut(ActionEvent event) {
         HomeController controller = (HomeController) getBController();
@@ -205,6 +249,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         getPreviousScreen().show();
     }
 
+    /**
+     * This function is to close app
+     *
+     */
     @FXML
     public void exit(ActionEvent event) {
         Client.getClient().close();
